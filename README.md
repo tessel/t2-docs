@@ -1,6 +1,8 @@
 # Tessel 2 Docs
 Documentation for Tessel 2
 
+*Looking for Tessel 1 docs? Look [here](//github.com/tessel/docs).*
+
 *Tessel is an open source project under open governance. Read more [here](https://github.com/tessel/project).*
 
 ## Supported languages
@@ -11,13 +13,17 @@ Documentation for Tessel 2
 
 ## Modules
 
-Our [start page](//start.tessel.io/modules) is the best place to go to learn about modules.
+* [Learn how to use modules on the start page](//start.tessel.io/modules)
+* [Metadata about tenpin, USB, and community modules, including compatibility](https://github.com/tessel/hardware-modules)
+* [Docs for module hardware](https://github.com/tessel/hardware/blob/master/modules-overview.md)
 
 ## Important repos
 
 * [CLI](https://github.com/tessel/t2-cli)
 * [Firmware](https://github.com/tessel/t2-firmware)
 * [OpenWRT Build](https://github.com/tessel/openwrt-tessel)
+* [Tessel 2 hardware design files](https://github.com/tessel/t2-hardware)
+* [Tessel VM](https://github.com/tessel/t2-vm)
 
 ## Get in touch
 
