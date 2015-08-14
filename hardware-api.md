@@ -1,7 +1,5 @@
 # Tessel 2 Hardware API
 
-*Looking for Tessel 1 docs? Look [here](//github.com/tessel/docs).*
-
 * [Ports and pins](#ports-and-pins)
   * [Modules](#modules)
   * [Pin mapping](#pin-mapping)

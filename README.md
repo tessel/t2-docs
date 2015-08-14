@@ -1,6 +1,8 @@
 # Tessel 2 Docs
 Documentation for Tessel 2
 
+*Looking for Tessel 1 docs? Look [here](//github.com/tessel/docs).*
+
 *Tessel is an open source project under open governance. Read more [here](https://github.com/tessel/project).*
 
 ## Supported languages
