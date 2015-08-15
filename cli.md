@@ -6,25 +6,9 @@
 * [Usage/CLI commands](#usage)
 
 ## Installation
-Prerequisites for installation: [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/downloads).
+Prerequisites for installation: [Node.js](https://nodejs.org/)
 
-1. Clone this repository by entering the following: `git clone https://github.com/tessel/t2-cli`.
-2. Go to the root directory of repository: `cd t2-cli`.
-3. Create a symbolic link: `npm link --local`.
-
-####Windows
-You may encounter the following error when executing `npm link` on windows:
-```
-19798 error Windows_NT 6.3.9600
-19799 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "link"
-19800 error node v0.12.4
-19801 error npm  v2.10.1
-19802 error code ELIFECYCLE
-19803 error tessel@0.3.23 postinstall: `tessel install-drivers || true; tessel trademark || true`
-19803 error Exit status 1
-19804 error Failed at the tessel@0.3.23 postinstall script 'tessel install-drivers || true; tessel trademark || true'.
-```
-This error occurs because of windows folder permissions. To resolve this make sure you are running cmd or powershell as an administrator and that the permissions on the node_modules folder is set to full control for the user.
+`npm install -g t2-cli`
 
 ## Updating Tessel 2 On-board OS/Firmware
 There are two components to the Tessel on-board software: The OpenWRT Linux image on the MediaTek processor and the firmware image that runs on the Atmel co-processor.
