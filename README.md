@@ -6,6 +6,7 @@ Documentation for Tessel 2
 *Tessel is an open source project under open governance. Read more [here](https://github.com/tessel/project).*
 
 ![](https://raw.githubusercontent.com/rwaldron/tessel-io/master/fritzing/tessel.png)
+
 [Fritzing part for Tessel](https://github.com/rwaldron/tessel-io/tree/master/fritzing)
 
 ## Get involved
