@@ -1,5 +1,5 @@
 # Tessel 2 Docs
-*Looking for Tessel 1 docs? Look [here](//github.com/tessel/docs).*
+*Looking for Tessel 1 docs? Look [here](https://github.com/tessel/t1-docs).*
 
 Tessel is an open source project under open governance. Read more [here](https://github.com/tessel/project).
 
