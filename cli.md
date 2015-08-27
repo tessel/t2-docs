@@ -49,11 +49,11 @@ If `--name` is not specified, CLI will look for an environment variable, e.g. `e
 * `t2 list` show what Tessels are available over WiFi and USB.
 * `t2 rename` change the name of a Tessel
 
-### Code Deploy
-* `t2 run <file>` deploy the file and its dependencies
+### Code Deployment 
+* `t2 run <file>` copy the file and its dependencies into Tessel's RAM & run immediately. Use this during development of your device application.
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
-* `t2 push <file>` copy the file and its dependencies into Tessel's Flash & run immediately
+* `t2 push <file>` copy the file and its dependencies into Tessel's Flash memory & run immediately. Once deployed with `push` command, the device application will automatically run every time the Tessel restarts. 
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
 * `t2 erase` erase any code pushed using the `t2 push` command
