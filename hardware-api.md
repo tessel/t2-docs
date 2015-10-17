@@ -150,8 +150,125 @@ uart.pipe(process.stdout);
 ```
 
 ## Button and LEDs
+There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object. 
 
-Tessel 2's button and LEDs are not yet exposed in the API – but you can change that! See [#15](https://github.com/tessel/t2-firmware/issues/15) for a description of what needs to be done.
+```js
+// an array of available LEDs
+var leds = tessel.led;
+
+// ERR - Red
+var red = leds[0];
+
+// WLAN - Amber
+var amber = leds[1];
+
+// LED0 - Green
+var green = leds[2];
+
+// LED1 - Blue
+var blue = leds[3];
+```
+
+Each LED has a few methods for controlling it.
+
+
+```js
+// Green LED
+var led = tessel.led[2];
+
+/*
+* Method: write
+* Arguments:
+* - value: usually 0 or 1 but could be any value representing true or false
+* - callback: function to call once the led's value has been set and is passed an error object if one occured.
+*
+* Sets the value of the led. Truthy values (1, true, 'string') turn it on. Falsey values (0, false) turn it off.
+*
+* Aliases:
+* - output
+*/
+led.write('1', function (err) {
+  if (err) {
+    console.log('There was an error with turning on the led.', err);
+  } else {
+    console.log('The green led is now on!');
+  }
+});
+
+/*
+* Method: read
+* Arguments:
+* - callback: function to call once the led's value has been read and is passed the value of the led.
+*
+* Reads the set value of the led.
+*/
+led.read(function (value) {
+  console.log('The value of the green led, probably 1:', value);
+});
+
+/*
+* Method: on
+* Returns: the led object (this makes it a chainable function)
+*
+* Turns the led ON.
+*/
+led.on();
+
+/*
+* Method: off
+* Returns: the led object (this makes it a chainable function)
+*
+* Turns the led OFF.
+*/
+led.off();
+
+/*
+* Method: high
+* Arguments:
+* - callback: function to call once the led's value has been set and is passed an error object if one occured
+*
+* Turns the led ON and calls the callback function once that is done.
+*/
+led.high(function (err) {
+  if (err) {
+    console.log('There was an error with turning on the led.', err);
+  } else {
+    console.log('The green led is now on!');
+  }
+});
+
+/*
+* Method: low
+* Arguments:
+* - callback: function to call once the led's value has been set and is passed an error object if one occured
+*
+* Turns the led OFF and calls the callback function once that is done.
+*/
+led.low(function (err) {
+  if (err) {
+    console.log('There was an error with turning off the led.', err);
+  } else {
+    console.log('The green led is now off!');
+  }
+});
+
+/*
+* Method: toggle
+* Arguments:
+* - callback: function to call once the led's value has been set and is passed an error object if one occured
+*
+* Toggles the current state of the led and calls the callback function once that is done.
+*/
+led.high(function (err) {
+  if (err) {
+    console.log('There was an error with toggling the led.', err);
+  } else {
+    console.log('The green led is now on OR off!');
+  }
+});
+```
+
+Tessel 2's button is not yet exposed in the API – but you can change that! See [#15](https://github.com/tessel/t2-firmware/issues/107) for a description of what needs to be done.
 
 ## USB Ports
 
