@@ -177,36 +177,6 @@ Each LED has a few methods for controlling it.
 var led = tessel.led[2];
 
 /*
-* Method: write
-* Arguments:
-* - value: usually 0 or 1 but could be any value representing true or false
-* - callback: function to call once the led's value has been set and is passed an error object if one occured.
-*
-* Sets the value of the led. Truthy values (1, true, 'string') turn it on. Falsey values (0, false) turn it off.
-*
-* Aliases:
-* - output
-*/
-led.write('1', function (err) {
-  if (err) {
-    console.log('There was an error with turning on the led.', err);
-  } else {
-    console.log('The green led is now on!');
-  }
-});
-
-/*
-* Method: read
-* Arguments:
-* - callback: function to call once the led's value has been read and is passed the value of the led.
-*
-* Reads the set value of the led.
-*/
-led.read(function (value) {
-  console.log('The value of the green led, probably 1:', value);
-});
-
-/*
 * Method: on
 * Returns: the led object (this makes it a chainable function)
 *
