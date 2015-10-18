@@ -259,7 +259,7 @@ led.low(function (err) {
 *
 * Toggles the current state of the led and calls the callback function once that is done.
 */
-led.high(function (err) {
+led.toggle(function (err) {
   if (err) {
     console.log('There was an error with toggling the led.', err);
   } else {
