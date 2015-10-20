@@ -35,24 +35,24 @@ The module ports are not just for modules! They can also be used as flexible, si
 
 The pin capabilities for ports A and B are as follows:
 
-| Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out |
-|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|
-|A     | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |
-|A     | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |
-|A     | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            |
-|A     | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |
-|A     | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |
-|A     | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            |
-|A     | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            |
-|A     | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            |
-|B     | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |
-|B     | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |
-|B     | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            |
-|B     | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |
-|B     | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |
-|B     | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            |
-|B     | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            |
-|B     | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          |
+| Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out | Interrupt | 
+|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|-----------|
+| A    | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |           |
+| A    | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |           |
+| A    | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            | ✓         |
+| A    | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |           |
+| A    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |
+| A    | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            | ✓         |
+| A    | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            | ✓         |
+| A    | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            | ✓         |
+| B    | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |           |
+| B    | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |           |
+| B    | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            | ✓         |
+| B    | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |           |
+| B    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |
+| B    | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            | ✓         |
+| B    | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            | ✓         |
+| B    | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          | ✓         |
 
 If you're newer to hardware and these functions look like alphabet soup to you, take a look at our [communication protocols documentation](https://tessel.io/docs/communicationProtocols) to get an idea of how these pins should be used.
 
