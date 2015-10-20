@@ -177,6 +177,16 @@ Each LED has a few methods for controlling it.
 var led = tessel.led[2];
 
 /*
+* Property: isOn
+* Returns: boolean (true or false) if led is on
+*
+* Checks the led to see if it is on or not.
+*/
+if (led.isOn) {
+  console.log('The green LED is currently on.');
+}
+
+/*
 * Method: on
 * Returns: the led object (this makes it a chainable function)
 *
