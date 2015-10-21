@@ -203,36 +203,6 @@ led.on();
 led.off();
 
 /*
-* Method: high
-* Arguments:
-* - callback: function to call once the led's value has been set and is passed an error object if one occured
-*
-* Turns the led ON and calls the callback function once that is done.
-*/
-led.high(function (err) {
-  if (err) {
-    console.log('There was an error with turning on the led.', err);
-  } else {
-    console.log('The green led is now on!');
-  }
-});
-
-/*
-* Method: low
-* Arguments:
-* - callback: function to call once the led's value has been set and is passed an error object if one occured
-*
-* Turns the led OFF and calls the callback function once that is done.
-*/
-led.low(function (err) {
-  if (err) {
-    console.log('There was an error with turning off the led.', err);
-  } else {
-    console.log('The green led is now off!');
-  }
-});
-
-/*
 * Method: toggle
 * Arguments:
 * - callback: function to call once the led's value has been set and is passed an error object if one occured
