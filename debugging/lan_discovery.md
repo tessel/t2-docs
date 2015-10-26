@@ -11,7 +11,9 @@ INFO Searching for nearby Tessels...
 ```
 
 ## An issue with detection
-First, let's check if your computer is able to detect the Tessel at all (to determine if it's an issue with the CLI or with the Tessel). We'll use a utility that we absolutely know works.
+First, you should confirm your host machine is on the same wifi network as your Tessel. You can run `t2 wifi` to get the network your Tessel 2 is connected to. If it's not connected, you'll need to do that and run `t2 list` again.
+
+Next, let's check if your computer is able to detect the Tessel at all (to determine if it's an issue with the CLI or with the Tessel). We'll use a utility that we absolutely know works.
 
 *I only have an example for OSX - if you know how to do mDNS discovery on Windows or Linux, please add to this file and submit a PR!*
 ### OSX
