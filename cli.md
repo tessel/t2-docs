@@ -65,8 +65,17 @@ If `--name` is not specified, CLI will look for an environment variable, e.g. `e
 ### Using Wifi
 * `t2 wifi` show details about an existing WiFi connection
   * `[-l]` lists the available networks
-  * `[-n SSID]` connects to the provided SSID
-  * `[-p PASS]` connects with the given password
+  * `[-n SSID]` required, connects to the provided SSID
+  * `[-p PASS]` optional, connects with the given password
+  * `[-s SECURITY]` connects with the given security type, valid options:
+    * `none` open network, no need for a password
+    * `wep` WEP network, password required
+    * `psk` WPA Personal, password required
+    * `psk2` WPA2 Personal, password required
+    * `wpa` WPA Enterprise, password required
+    * `wpa2` WPA2 Enterprise, password required
+  * `[--off]` disconnects from the current network
+  * `[--on]` connects to the last configured network
 
 ### Create An Access Point
 * `t2 ap`
