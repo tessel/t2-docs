@@ -63,3 +63,16 @@ If `--name` is not specified, CLI will look for an environment variable, e.g. `e
   * `[-l]` lists the available networks
   * `[-n SSID]` connects to the provided SSID
   * `[-p PASS]` connects with the given password
+
+### Create An Access Point
+* `t2 ap`
+  * `[-n SSID]` required, creates a network with the given ssid
+  * `[-p PASS]` optional for open networks, creates a network with the given password
+  * `[-s SECURITY]`  creates a network with the given security, valid options:
+    * `none` open network, default if no password is given
+    * `wep` WEP network, password required
+    * `psk` WPA Personal, password required
+    * `psk2` WPA2 Personal, reccomended, password required & default if password is given without security
+  * `[--trigger on/off]`
+    * `on` turn on the most recently used access point
+    * `off` turn off the current access point
