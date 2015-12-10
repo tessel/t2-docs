@@ -53,9 +53,13 @@ If `--name` is not specified, CLI will look for an environment variable, e.g. `e
 * `t2 run <file>` copy the file and its dependencies into Tessel's RAM & run immediately. Use this during development of your device application.
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
+  * `[--slim]` true by default, copy only files needed by the program to run
+  * `[--full]` the opposite of --slim, copy all the files in the project directory
 * `t2 push <file>` copy the file and its dependencies into Tessel's Flash memory & run immediately. Once deployed with `push` command, the device application will automatically run every time the Tessel restarts. 
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
+  * `[--slim]` true by default, copy only files needed by the program to run
+  * `[--full]` the opposite of --slim, copy all the files in the project directory
 * `t2 erase` erase any code pushed using the `t2 push` command
 
 ### Using Wifi
