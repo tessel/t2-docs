@@ -6,7 +6,7 @@
 * [Usage/CLI commands](#usage)
 
 ## Installation
-Prerequisites for installation: [Node.js](https://nodejs.org/)
+Prerequisites for installation: [Node.js](https://nodejs.org/) 4.2.x or greater
 
 `npm install -g t2-cli`
 
