@@ -4,6 +4,8 @@
   * [Modules](#modules)
   * [Pin mapping](#pin-mapping)
   * [Digital pins](#digital-pins)
+  * [Analog pins](#analog-pins)
+  * [PWM pins](#pwm-pins)
   * [SPI](#spi)
   * [I2C](#i2c)
   * [UART/Serial](#uart-serial)
@@ -31,30 +33,32 @@ var climatelib = require('climate-si7020').use(tessel.port.B);
 
 ### Pin mapping
 
-The module ports are not just for modules! They can also be used as flexible, simply addressable GPIO pins.
+The module ports are not just for modules! They can also be used as flexible, simply addressable General purpose input-output (GPIO) pins. GPIO pins provide access for digital and analog signal lines. Available pins are exposed through the .pin, .digital, .analog, and .pwm arrays.
 
 The pin capabilities for ports A and B are as follows:
 
-| Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out | Interrupt | 
-|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|-----------|
-| A    | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |           |
-| A    | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |           |
-| A    | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            | ✓         |
-| A    | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |           |
-| A    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |
-| A    | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            | ✓         |
-| A    | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            | ✓         |
-| A    | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            | ✓         |
-| B    | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |           |
-| B    | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |           |
-| B    | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            | ✓         |
-| B    | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |           |
-| B    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |
-| B    | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            | ✓         |
-| B    | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            | ✓         |
-| B    | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          | ✓         |
+| Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out | Interrupt | PWM |
+|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|-----------|-----|
+| A    | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |           |     |
+| A    | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |           |     |
+| A    | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            | ✓         |     |
+| A    | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |           |     |
+| A    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |     |
+| A    | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            | ✓         | ✓   |
+| A    | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            | ✓         | ✓   |
+| A    | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            | ✓         |     |
+| B    | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |           |     |
+| B    | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |           |     |
+| B    | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            | ✓         |     |
+| B    | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |           |     |
+| B    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |     |
+| B    | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            | ✓         | ✓   |
+| B    | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            | ✓         | ✓   |
+| B    | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          | ✓         |     |
 
 If you're newer to hardware and these functions look like alphabet soup to you, take a look at our [communication protocols documentation](https://tessel.io/docs/communicationProtocols) to get an idea of how these pins should be used.
+
+By default, all of the pins are pulled high if not specifically set.
 
 ### Digital pins
 
@@ -91,7 +95,23 @@ pin.analogRead(function(error, value) {
 
 ### PWM pins
 
-PWM pins are not yet implemented. See [#21](https://github.com/tessel/t2-firmware/issues/21).
+**PWM pins** are pulse-width modulated pins ([wiki link](http://en.wikipedia.org/wiki/Pulse-width_modulation)). Essentially, PWM is a digital signal that spends between 0% and 100% of its time pulled high/on (this is its "duty cycle"). You can set the PWM pins to any value between 0 and 1 to approximate an analog signal. PWM is often used to control servo speeds or LED brightness.
+
+Tessel has four PWM pins: pins 5 and 6 on each module port.
+
+Here is an example of setting a PWM pin:
+```js
+var tessel = require('tessel'); // Import tessel
+var port = tessel.port.A; // Select one of the two ports
+var myPin = port.pwm[0]; // Equivalent to port.digital[0]
+// Tell the Tessel that the frequency of its pwm pins is 50 Hz (application specific)
+tessel.pwmFrequency(980);
+// Set duty cycle
+myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
+```
+
+Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-setting
+`pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. `pwmFrequency` is capable of frequencies from 1Hz to 5kHz.
 
 ### I2C
 
@@ -150,7 +170,7 @@ uart.pipe(process.stdout);
 ```
 
 ## Button and LEDs
-There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object. 
+There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object.
 
 ```js
 // an array of available LEDs
