@@ -10,6 +10,8 @@ Prerequisites for installation: [Node.js](https://nodejs.org/) 4.2.x or greater
 
 `npm install -g t2-cli`
 
+The best place to go next is [the Tessel 2 start experience](http://tessel.io/t2-cli), which will walk you through a tutorial.
+
 ## Updating Tessel 2 On-board OS/Firmware
 
 ### How do I know if I need to update my T2?
@@ -34,8 +36,8 @@ Specify which Tessel to use with the `--name <name>` option appended to any comm
 If `--name` is not specified, CLI will look for an environment variable, e.g. `export TESSEL=Bulbasaur`. If none of the above are specified and there is one Tessel connected over USB, this Tessel will be preferred. Finally, if there is only one Tessel available and none of the above are specified, CLI will choose that Tessel.
 
 ### Starting Projects
-* `t2 init` in the current directory, create a package.json and index.js with Hello World code. *Note that the index.js code doesn't yet work on Tessel 2*
-
+* `t2 init` in the current directory, create a package.json and index.js with Hello World code.
+* 
 ### Project Files
 Along with the package.json and index.js included in the `t2 init` process, there are some other files that may be useful for your project:
 * `.tesselignore` similar to .gitignore or [.npmignore](https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package), this file should list any files or directories you want ignored by the T2 bundling and deployment process. This is handy when using the `--full` flag, which tells T2 to bundle everything in the project directory.
