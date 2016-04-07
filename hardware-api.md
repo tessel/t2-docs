@@ -10,7 +10,7 @@
 * [Button and LEDs](#button-and-leds)
 * [USB ports](#usb-ports)
 
-When you `require('tessel')` within a script which is executed on Tessel 2, this loads a library which interfaces with the Tessel 2 hardware, including pins, ports, and LEDs, just like Tessel 1 ([Tessel 1 hardware documentation](https://tessel.io/docs/hardwareAPI)). The code for Tessel 2's hardware object can be found [here](https://github.com/tessel/t2-firmware/blob/master/node/tessel.js).
+When you `require('tessel')` within a script which is executed on Tessel 2, this loads a library which interfaces with the Tessel 2 hardware, including pins, ports, and LEDs, just like Tessel 1 ([Tessel 1 hardware documentation](https://github.com/tessel/t1-docs/blob/master/hardware-api.md)). The code for Tessel 2's hardware object can be found [here](https://github.com/tessel/t2-firmware/blob/master/node/tessel.js).
 
 ## Ports and pins
 
@@ -35,24 +35,24 @@ The module ports are not just for modules! They can also be used as flexible, si
 
 The pin capabilities for ports A and B are as follows:
 
-| Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out |
-|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|
-|A     | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |
-|A     | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |
-|A     | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            |
-|A     | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |
-|A     | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |
-|A     | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            |
-|A     | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            |
-|A     | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            |
-|B     | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |
-|B     | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |
-|B     | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            |
-|B     | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |
-|B     | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |
-|B     | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            |
-|B     | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            |
-|B     | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          |
+| Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out | Interrupt | 
+|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|-----------|
+| A    | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |           |
+| A    | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |           |
+| A    | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            | ✓         |
+| A    | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |           |
+| A    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |
+| A    | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            | ✓         |
+| A    | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            | ✓         |
+| A    | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            | ✓         |
+| B    | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |           |
+| B    | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |           |
+| B    | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            | ✓         |
+| B    | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |           |
+| B    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |
+| B    | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            | ✓         |
+| B    | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            | ✓         |
+| B    | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          | ✓         |
 
 If you're newer to hardware and these functions look like alphabet soup to you, take a look at our [communication protocols documentation](https://tessel.io/docs/communicationProtocols) to get an idea of how these pins should be used.
 
@@ -150,8 +150,75 @@ uart.pipe(process.stdout);
 ```
 
 ## Button and LEDs
+There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object. 
 
-Tessel 2's button and LEDs are not yet exposed in the API – but you can change that! See [#15](https://github.com/tessel/t2-firmware/issues/15) for a description of what needs to be done.
+```js
+// an array of available LEDs
+var leds = tessel.led;
+
+// ERR - Red
+var red = leds[0];
+
+// WLAN - Amber
+var amber = leds[1];
+
+// LED0 - Green
+var green = leds[2];
+
+// LED1 - Blue
+var blue = leds[3];
+```
+
+Each LED has a few methods for controlling it.
+
+
+```js
+// Green LED
+var led = tessel.led[2];
+
+/*
+* Property: isOn
+* Returns: boolean (true or false) if led is on
+*
+* Checks the led to see if it is on or not.
+*/
+if (led.isOn) {
+  console.log('The green LED is currently on.');
+}
+
+/*
+* Method: on
+* Returns: the led object (this makes it a chainable function)
+*
+* Turns the led ON.
+*/
+led.on();
+
+/*
+* Method: off
+* Returns: the led object (this makes it a chainable function)
+*
+* Turns the led OFF.
+*/
+led.off();
+
+/*
+* Method: toggle
+* Arguments:
+* - callback: function to call once the led's value has been set and is passed an error object if one occured
+*
+* Toggles the current state of the led and calls the callback function once that is done.
+*/
+led.toggle(function (err) {
+  if (err) {
+    console.log('There was an error with toggling the led.', err);
+  } else {
+    console.log('The green led is now on OR off!');
+  }
+});
+```
+
+Tessel 2's button is not yet exposed in the API – but you can change that! See [#15](https://github.com/tessel/t2-firmware/issues/107) for a description of what needs to be done.
 
 ## USB Ports
 

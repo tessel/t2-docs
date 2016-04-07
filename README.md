@@ -1,21 +1,14 @@
 # Tessel 2 Docs
-Documentation for Tessel 2
+*Looking for Tessel 1 docs? Look [here](https://github.com/tessel/t1-docs).*
 
-*Looking for Tessel 1 docs? Look [here](//github.com/tessel/docs).*
-
-*Tessel is an open source project under open governance. Read more [here](https://github.com/tessel/project).*
+Tessel is an open source project under open governance. Read more [here](https://github.com/tessel/project).
 
 ![](https://raw.githubusercontent.com/rwaldron/tessel-io/master/fritzing/tessel.png)
+
 [Fritzing part for Tessel](https://github.com/rwaldron/tessel-io/tree/master/fritzing)
 
-## Get involved
+**Get involved:** The Tessel project welcomes contributors! Get started [here](https://github.com/tessel/project) and reach out if you have any questions.
 
-The Tessel project welcomes contributors! Get started [here](https://github.com/tessel/project) and reach out if you have any questions.
+**Stay in the loop:** Sign up for our weekly-ish newsletter [This Week in Tessel](http://eepurl.com/EoMoP)
 
-## Stay in the loop
-
-* [This Week in Tessel](http://eepurl.com/EoMoP)
-
-## License
-
-This documentation repo is CC-BY-SA 4.0 licensed.
+**License:** This documentation repo is CC-BY-SA 4.0 licensed.
