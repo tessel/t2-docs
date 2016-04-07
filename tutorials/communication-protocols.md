@@ -1,7 +1,7 @@
 # Tessel 2 Module Communication Protocols
-Each of the two ports on Tessel 2 exposes ten pins for use in creating custom modules. Two of the pins are for power (3.3V and ground) and the other eight are settable GPIO (General Purpose Input and Output) pins that can be used to communicate with your module.
+Each of the two ports on Tessel 2 exposes ten pins for use in creating custom modules. Two of the pins are for power (3.3V and ground) and the other eight are configurable GPIO (General Purpose Input and Output) pins that can be used to communicate with your module.
 
-All eight communication pins allow for communication through changes in voltage: some through variable voltage from 0V to 3.3V (analog pins), some through simple on/off (0V/3.3V) states, and some through special digital toggling referred to by their communication protocols. Communication protocols (such as SPI, I2C, and UART) involve a pre-defined set of pins used in a specific way. These protocols are used to encode complex messages. It's a lot like [Morse code](http://en.wikipedia.org/wiki/Morse_code), but for electronics.
+All eight communication pins allow for communication through changes in voltage: some through variable voltage between 0V and 3.3V (analog pins), some through simple on/off (0V/3.3V) states (digital pins), and some through special digital toggling referred to by their communication protocols. Communication protocols (such as SPI, I2C, and UART) involve a pre-defined set of pins used in a specific way. These protocols are used to encode complex messages. It's a lot like [Morse code](http://en.wikipedia.org/wiki/Morse_code), but for electronics.
 
 In embedded electronics, there are four common protocols and Tessel [supports them all in JavaScript](https://tessel.io/docs/hardwareAPI).
 
@@ -21,7 +21,7 @@ Most of the time, you will choose your protocol based on the parts you are using
 |:--------:	|:-------------------------------------:|:-------------------------------:|
 | GPIO     	|          **1**         	             	| 1kHz                            |
 | SPI      	| **3+** (MOSI, MISO, SCK + 1 GPIO pin) | 25MBit/s                        |
-| I2C      	|          **2** (SCL and SDA)        	| I2C0 - 1Mbit/s I2C1 - 400kbit/s	|
+| I2C      	|          **2** (SCL and SDA)        	| 100kHz or 400kHz configurable by module port	|
 | UART     	|           **2** (TX and RX)           | 8Mbit/s                        	|
 
 ## A Note on Level Shifting

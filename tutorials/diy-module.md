@@ -78,7 +78,7 @@ In the world of web communication, there are standards like HTTP, HTTPS, and FTP
 Because the Tessel [does most of the heavy lifting][hardware_api] for all of these, you don't need to be an expert to use them in your custom module. However, if you'd like to learn a little more, we've [provided a simple overview of each](https://tessel.io/docs/communicationProtocols).
 
 ### So Which Communication Protocol Should I Use?
-Knowing that there are four communication options available to you, which should you use for your custom module? The good news is that this will usually be decided for you based on the type of module you are creating. For example, most [PIR sensor modules][pir_project] will set a pin high when motion is detected, which can be read with a simple digital input (GPIO). The same applies to sensors. For example, the Si7005 temperature and humidity sensor on the [Climate Module][climate_module] communicates via the [I2C protocol][comm_i2c]. Usually sensors will only support one protocol– so the decision is easy, you use that one.
+Knowing that there are four communication options available to you, which should you use for your custom module? The good news is that this will usually be decided for you based on the type of module you are creating. For example, most [PIR sensor modules][pir_project] will set a pin high when motion is detected, which can be read with a simple digital input (GPIO). The same applies to sensors. For example, the Si7020 temperature and humidity sensor on the [Climate Module][climate_module] communicates via the [I2C protocol][comm_i2c]. Usually sensors will only support one protocol– so the decision is easy, you use that one.
 
 You will find some modules that support both SPI and I2C, and either will work just fine with the Tessel. As a general rule of thumb, we recommend you favor the SPI protocol in these scenarios as it eliminates the risk of I2C address collisions with other connected I2C modules.
 
@@ -286,7 +286,7 @@ Here is what the module looks like soldered to the double-wide proto-module.
 <p style="text-align:center"><em>Nokia 5110 soldered to a large proto-module board</em></p>
 
 ### Software
-With the screen hooked up, it's time to start writing code. We'll follow the pattern found in the [Git Repo Template][repo_template] and start by creating a directory called **tessel-nokia5110** and cd into that directory. Next, we'll create **index.js** which is where we'll write our API using [the example index.js template][index_template] as a guide.
+With the screen hooked up, it's time to start writing code. We'll follow the pattern found in the [Git Repo Template][repo_template] and start by creating a directory called **tessel-nokia5110** and cd into that directory. Next, we'll use `t2 init` to create **index.js** which is where we'll write our API using [the example index.js template][index_template] as a guide.
 
 Because this screen is so popular, there are lots of code examples and libraries online for interacting with it. We don't need to reinvent the wheel; we just want to control the screen with JavaScript.
 
