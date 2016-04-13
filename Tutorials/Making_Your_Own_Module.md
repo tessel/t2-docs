@@ -374,11 +374,11 @@ To help you get started creating your own custom modules, here is a list of the 
 [pir_project]: https://projects.tessel.io/projects/pir
 [button_project_page]: https://projects.tessel.io/projects/button-proto-module/
 [orig_button_project_page]: https://projects.tessel.io/projects/a-button-on-tessel
-[comm_protocols]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md
-[comm_gpio]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#gpio
-[comm_spi]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#spi
-[comm_i2c]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#i2c
-[comm_uart]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#uart
+[comm_protocols]: https://tessel.io/docs/communicationProtocols
+[comm_gpio]: https://tessel.io/docs/communicationProtocols#gpio
+[comm_spi]: https://tessel.io/docs/communicationProtocols#spi
+[comm_i2c]: https://tessel.io/docs/communicationProtocols#i2c
+[comm_uart]: https://tessel.io/docs/communicationProtocols#uart
 [third_party_doc]: https://github.com/tessel/docs/blob/master/tutorials/make-external-hardware-library.md
 [nokia_sparkfun]: https://www.sparkfun.com/products/10168
 [nokia_adafruit]: https://www.adafruit.com/products/338
