@@ -121,10 +121,10 @@ Here is an example using Tessel's I2C protocol:
 
 ```js
 var port = tessel.port.A;
-var slaveAddress = 0xDE;
-var i2c = new port.I2C(slaveAddress)
+var replicaAddress = 0xDE;
+var i2c = new port.I2C(replicaAddress)
 i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-  console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
+  console.log('buffer returned by I2C replica ('+replicaAddress.toString(16)+'):', rx);
 })
 ```
 
@@ -143,7 +143,7 @@ var spi = new port.SPI({
 });
 
 spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-  console.log('buffer returned by SPI slave:', rx);
+  console.log('buffer returned by SPI replica:', rx);
 });
 ```
 

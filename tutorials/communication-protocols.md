@@ -111,15 +111,15 @@ Some examples of using a GPIO pin as an output are [simple LEDs][led_example] an
 SPI stands for [Serial Peripheral Interface][spi_wikipedia]. The SPI protocol allows data to be exchanged one byte at a time between the Tessel and a module via two communication lines.
 This is great for transferring data like sensor readings or sending commands to a module.
 
-The SPI protocol is known as a Master/Slave protocol, which means that there is always a single master device which controls the flow of communication with one or more slave devices. Think of the master as a traffic cop. It directs all of the connected slave devices so they know when it's their turn to communicate.
+The SPI protocol is known as a Primary/Replica protocol, which means that there is always a single primary device which controls the flow of communication with one or more replica devices. Think of the primary as a traffic cop. It directs all of the connected replica devices so they know when it's their turn to communicate.
 
-When you are creating modules, the Tessel will always act as the master device, and your custom module will be a slave device.
+When you are creating modules, the Tessel will always act as the primary device, and your custom module will be a replica device.
 
 The SPI protocol requires a minimum of three signal connections and usually has four (this is in addition to the power connections). The following diagram shows the connections (arrows indicate flow of data).
 
 <h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/Simple_SPI.png" /></h1>
 
-<p style="text-align:center"><em>The red lines constitute the shared bus connections used for talking to the slave devices. The green wire is the shared bus connection used by the slaves to talk to the master. The blue line is the chip select for signaling each slave individually.</em></p>
+<p style="text-align:center"><em>The red lines constitute the shared bus connections used for talking to the replica devices. The green wire is the shared bus connection used by the replicas to talk to the primary. The blue line is the chip select for signaling each replica individually.</em></p>
 
 
 #### SCK
@@ -138,20 +138,20 @@ MOSI stands for **M**aster **O**ut **S**lave **I**n and is the connection used b
 MISO stands for **M**aster **I**n **S**lave **O**ut and is the connection used by the module to send data to the Tessel.
 
 #### SS or CS
-This line, normally referred to as the **Slave Select (SS)** or **Chip Select (CS)** line, is used by the master device to notify a specific slave device that it is about to send data. We normally call it CS, but you may see it either way in datasheets and other references.
+This line, normally referred to as the **Slave Select (SS)** or **Chip Select (CS)** line, is used by the primary device to notify a specific replica device that it is about to send data. We normally call it CS, but you may see it either way in datasheets and other references.
 
 When you create a Tessel module which uses the SPI protocol, the CS connection will be handled by one of the GPIO pins on the Tessel port.
 
-The following diagram shows how the various pins in the SPI protocol are toggled to create meaningful data. In this case, the master sends the ASCII character 'S', and the slave responds with 'F'.
+The following diagram shows how the various pins in the SPI protocol are toggled to create meaningful data. In this case, the primary sends the ASCII character 'S', and the replica responds with 'F'.
 
 <h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/spi_diagram.jpg" /></h1>
 
 <p style="text-align:center"><em>Timing diagram of SPI data exchange. Modified [image](https://dlnmh9ip6v2uc.cloudfront.net/assets/c/7/8/7/d/52ddb2dcce395fed638b4567.png) from Sparkfun is [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)</em></p>
 
-Remember that the master initiates all communication. When it is ready, the first thing it will do is pull the CS/SS pin low to let the slave device know that a data transmission is about to begin.
-The master holds this pin low for the duration of the data exchange as seen in the diagram above.
+Remember that the primary initiates all communication. When it is ready, the first thing it will do is pull the CS/SS pin low to let the replica device know that a data transmission is about to begin.
+The primary holds this pin low for the duration of the data exchange as seen in the diagram above.
 
-With the CS/SS pin low, the master will start to toggle the clock pin (SCK) while simultaneously controlling the MOSI to represent the bits of information it wishes to send to the slave.
+With the CS/SS pin low, the primary will start to toggle the clock pin (SCK) while simultaneously controlling the MOSI to represent the bits of information it wishes to send to the replica.
 The numbers in green on the diagram above delineate each bit in the byte being transferred.
 
 It sounds complicated, but remember that the Tessel takes care of all of this pin manipulation for you. All you have to do is write some Javascript like this code snippet, which demonstrates the use of the SPI protocol on port A.
@@ -163,7 +163,7 @@ var spi = new portA.SPI({
 });
 
 spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-  console.log('buffer returned by SPI slave:', rx);
+  console.log('buffer returned by SPI replica:', rx);
 });
 ```
 
@@ -177,7 +177,7 @@ spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
 
 I2C stands for [Inter-Integrated Circuit][i2c_wikipedia] and is pronounced "I squared C", "I two C" or "I-I-C". I2C is a protocol that allows one device to exchange data with one or more connected devices through the use of a single data line and clock signal.
 
-I2C is a Master/Slave protocol, which means that there is always a single master device which controls the flow of communication with one or more slave devices.
+I2C is a Primary/Replica protocol, which means that there is always a single primary device which controls the flow of communication with one or more replica devices.
 
 I2C only requires two communication connections:
 
@@ -188,11 +188,11 @@ I2C only requires two communication connections:
 This is the clock signal that keeps the Tessel and the module synchronized while transferring data. The two devices need to have a mutual understanding of how fast data is to be transferred between them. This is sometimes referred to as the baud or bitrate. The clock signal provides that reference signal for the devices to use when exchanging data. Without a clock signal to synchronize the devices, they would have no way to interpret the signal on the data lines.
 
 #### SDA
-This is the data line used for exchanging data between the master and slaves. Instead of having separate communication lines for the master and slave devices, they both share a single data connection. The master coordinates the usage of that connection so that only one device is "talking" at a time.
+This is the data line used for exchanging data between the primary and replicas. Instead of having separate communication lines for the primary and replica devices, they both share a single data connection. The primary coordinates the usage of that connection so that only one device is "talking" at a time.
 
-Since multiple slave devices can use the same SDA line, the master needs a way to distinguish between them and talk to a single device at a time. The I2C protocol uses the concept of **device addressing** to coordinate traffic on the data line.
+Since multiple replica devices can use the same SDA line, the primary needs a way to distinguish between them and talk to a single device at a time. The I2C protocol uses the concept of **device addressing** to coordinate traffic on the data line.
 
-Every single I2C device connected to the Tessel will have an internal address that cannot be the same as any other module connected to the Tessel. This address is usually determined by the device manufacturer and listed in the datasheet. Sometimes you can configure the address through device-specific tweaks defined by the manufacturer. The Tessel, as the master device, needs to know the address of each slave and will use it to notify a device when it wants to communicate with it before transferring data.
+Every single I2C device connected to the Tessel will have an internal address that cannot be the same as any other module connected to the Tessel. This address is usually determined by the device manufacturer and listed in the datasheet. Sometimes you can configure the address through device-specific tweaks defined by the manufacturer. The Tessel, as the primary device, needs to know the address of each replica and will use it to notify a device when it wants to communicate with it before transferring data.
 
 <h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/Multi_I2C.png" /></h1>
 
@@ -202,23 +202,23 @@ The following diagram illustrates how the SDA and SCL pins are toggled when tran
 
 <h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/i2c_modified_timing.png" /></h1>
 
-To begin a data transaction, the master creates what is called a start condition by pulling the SDA pin low before the SCL pin.
+To begin a data transaction, the primary creates what is called a start condition by pulling the SDA pin low before the SCL pin.
 
-The master then broadcasts the address of the device it wishes to communicate with by sending each bit of the 7 bit address. Notice the clock signal (SCL) is toggled for each bit. This toggling is how the slaves know when to read each bit of the address so they can determine with which device the master wants to communicate.
+The primary then broadcasts the address of the device it wishes to communicate with by sending each bit of the 7 bit address. Notice the clock signal (SCL) is toggled for each bit. This toggling is how the replicas know when to read each bit of the address so they can determine with which device the primary wants to communicate.
 
-Right after the address, the master sends a read/write bit which signals whether it will be sending data to the slave or reading data from the slave.
+Right after the address, the primary sends a read/write bit which signals whether it will be sending data to the replica or reading data from the replica.
 
-After broadcasting the address, the master either transmits data to the slave or sends the address of a register (internal storage) on the slave from which it wishes to retrieve data.
+After broadcasting the address, the primary either transmits data to the replica or sends the address of a register (internal storage) on the replica from which it wishes to retrieve data.
 
-Finally, the master will issue a stop condition on the bus by pulling SCL high, followed by SDA.
+Finally, the primary will issue a stop condition on the bus by pulling SCL high, followed by SDA.
 
 It's a little complicated, but the Tessel takes care of all the details for you. Using the I2C pins on port A looks like this:
 
 ```js
 var tessel = require('tessel'); // import tessel
 var portA = tessel.port['A']; // use Port A
-var slaveAddress = 0xDE; // This is the address of the attached module/sensor
-var i2c = new portA.I2C(slaveAddress)
+var replicaAddress = 0xDE; // This is the address of the attached module/sensor
+var i2c = new portA.I2C(replicaAddress)
 
 i2c.send(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err) {
   console.log("I'm done sending the data");
