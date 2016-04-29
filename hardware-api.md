@@ -128,6 +128,14 @@ i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
 })
 ```
 
+### Terms Used
+
+The following sections use industry standard technical terms that are considered non-inclusive. They are used here in an explicitly technical manner and only to be accurate in describing these wire communication protocols. The terms are used strictly as defined here:
+
+**Master:** A machine or device directly controlling another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/master#master__7))
+
+**Slave:** A device, or part of one, directly controlled by another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/slave#slave__7))
+
 ### SPI
 
 A SPI channel uses the SCK, MISO, and MOSI pins (2, 3, and 4 on Tessel 2). If you are unfamiliar with the SPI protocol, please see the [communication protocols tutorial](https://tessel.io/docs/communicationProtocols#spi).
