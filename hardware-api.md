@@ -5,6 +5,7 @@
   * [Pin mapping](#pin-mapping)
   * [Digital pins](#digital-pins)
   * [Analog pins](#analog-pins)
+  * [Interrupts](#interrupt-pins)
   * [PWM pins](#pwm-pins)
   * [SPI](#spi)
   * [I2C](#i2c)
@@ -95,6 +96,83 @@ pin.analogRead(function(error, value) {
 });
 ```
 
+### Interrupt Pins
+
+Interrupts allow us to register events based on state changes in a pin.
+
+Take a look at the following circuit. We've connected Port A pin2 to ground
+via a button. Before we press the button, circuit is open and the voltage at
+pin2 will be high. When the button is pressed we'll complete the circuit
+and the voltage at pin2 will fall.
+
+![Interrupt Circuit](images/interrupt-circuit.png)
+
+Let's turn on the green LED when the button is pressed. Here's one way of doing
+it.
+
+```js
+var tessel = require('tessel'); // Import tessel
+
+// Initialize our pins
+var green = tessel.led[2];
+var pin2 = tessel.port.A.pin[2];
+
+// Turn off the green LED
+green.off();
+
+// Every 10 milliseconds check to see if the button was pressed
+setInterval(function() {
+  pin2.read(function(error, value) {
+
+    // button was pressed
+    if (value === 0) {
+      green.on();
+    }
+  });
+}, 10);
+
+```
+
+This is pretty inefficient. We're spending a lot of time (every 10 millseconds)
+manually checking to see if the button was pressed. Let's just tell the
+processor to run some code when the voltage drops.
+
+```js
+var tessel = require('tessel'); // Import tessel
+
+// Initialize our pins
+var green = tessel.led[2];
+var pin2 = tessel.port.A.pin[2];
+
+// Turn off the green LED
+green.off();
+
+// Register an event. When the voltage on pin2 falls, turn on the green LED.
+pin2.on('fall', function() {
+  green.on();
+});
+
+```
+
+We tell the processor to invoke our callback function when pin2 falls (button
+has been pressed). We don't have to continuously poll to see if the voltage
+has fallen. We can just register our listener and move on.
+
+#### Available interrupt events
+
+event  | description
+-------|------------
+rise   | pin voltage rises
+fall   | pin voltage falls
+change | pin voltage changes
+high   | pin voltage goes high\*
+low    | pin voltage goes low\*
+
+\* Only available via pin.once(). Only one of these events may be registered at
+a time.
+
+[More information on interrupts](https://www.sparkfun.com/tutorials/326)
+
 ### PWM pins
 
 **PWM pins** are pulse-width modulated pins ([wiki link](http://en.wikipedia.org/wiki/Pulse-width_modulation)). Essentially, PWM is a digital signal that spends between 0% and 100% of its time pulled high/on (this is its "duty cycle"). You can set the PWM pins to any value between 0 and 1 to approximate an analog signal. PWM is often used to control servo speeds or LED brightness.
@@ -114,6 +192,7 @@ myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 
 Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-setting
 `pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. `pwmFrequency` is capable of frequencies from 1Hz to 5kHz.
+
 
 ### I2C
 
