@@ -98,7 +98,8 @@ pin.analogRead(function(error, value) {
 
 ### Interrupt Pins
 
-Interrupts allow us to register events based on state changes in a pin.
+Interrupts allow us to register events based on state changes in a pin. Pins
+2, 5, 6, 7 on both Ports are available for interrupts.
 
 Take a look at the following circuit. We've connected Port A pin2 to ground
 via a button. Before we press the button, circuit is open and the voltage at
@@ -158,18 +159,27 @@ We tell the processor to invoke our callback function when pin2 falls (button
 has been pressed). We don't have to continuously poll to see if the voltage
 has fallen. We can just register our listener and move on.
 
-#### Available interrupt events
+#### Usage
 
-event  | description
--------|------------
-rise   | pin voltage rises
-fall   | pin voltage falls
-change | pin voltage changes
-high   | pin voltage goes high\*
-low    | pin voltage goes low\*
+```js
+// Invoke the callback whenever the event occurs
+pin.on(eventName, callback);
 
-\* Only available via pin.once(). Only one of these events may be registered at
-a time.
+// Invoke the callback the first time the event occurs
+pin.once(eventName, callback);
+```
+
+#### Available Events
+
+eventName | description           | notes
+----------|-----------------------|------
+rise      | pin voltage rises     |
+fall      | pin voltage falls     |
+change    | pin voltage changes   | Passes current value of pin to callback
+high\*    | pin voltage goes high | Only available via pin.once()
+low\*     | pin voltage goes low  | Only available via pin.once()
+
+\* Only one of these events may be registered at a time.
 
 [More information on interrupts](https://www.sparkfun.com/tutorials/326)
 
