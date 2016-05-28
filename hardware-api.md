@@ -101,10 +101,9 @@ pin.analogRead(function(error, value) {
 Interrupts allow us to register events based on state changes in a pin. Pins
 2, 5, 6, 7 on both Ports are available for interrupts.
 
-Take a look at the following circuit. We've connected Port A pin2 to ground
-via a button. Before we press the button, circuit is open and the voltage at
-pin2 will be high. When the button is pressed we'll complete the circuit
-and the voltage at pin2 will fall.
+Take a look at the following circuit. While the switch is open, pin2 will be
+low. When the button is pressed we'll complete the circuit and the voltage at
+pin2 will rise to 3.3V.
 
 ![Interrupt Circuit](images/interrupt-circuit.png)
 
@@ -126,7 +125,7 @@ setInterval(function() {
   pin2.read(function(error, value) {
 
     // button was pressed
-    if (value === 0) {
+    if (value === 1) {
       green.on();
     }
   });
@@ -136,7 +135,7 @@ setInterval(function() {
 
 This is pretty inefficient. We're spending a lot of time (every 10 millseconds)
 manually checking to see if the button was pressed. Let's just tell the
-processor to run some code when the voltage drops.
+processor to run some code when the voltage rises.
 
 ```js
 var tessel = require('tessel'); // Import tessel
@@ -148,16 +147,16 @@ var pin2 = tessel.port.A.pin[2];
 // Turn off the green LED
 green.off();
 
-// Register an event. When the voltage on pin2 falls, turn on the green LED.
-pin2.on('fall', function() {
+// Register an event. When the voltage on pin2 rises, turn on the green LED.
+pin2.on('rise', function() {
   green.on();
 });
 
 ```
 
-We tell the processor to invoke our callback function when pin2 falls (button
+We tell the processor to invoke our callback function when pin2 rises (button
 has been pressed). We don't have to continuously poll to see if the voltage
-has fallen. We can just register our listener and move on.
+has risen. We can just register our listener and move on.
 
 #### Usage
 
