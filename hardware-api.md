@@ -105,7 +105,7 @@ Take a look at the following circuit. While the switch is open, pin2 will be
 low. When the button is pressed we'll complete the circuit and the voltage at
 pin2 will rise to 3.3V.
 
-![Interrupt Circuit](https://raw.githubusercontent.com/tessel/t2-docs/master/images/interrupt-circuit.png)
+![Interrupt Circuit](https://s3.amazonaws.com/technicalmachine-assets/tutorials/hardware-api/interrupt-circuit.png)
 
 Let's turn on the green LED when the button is pressed. Here's one way of doing
 it.
