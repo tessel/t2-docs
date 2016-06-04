@@ -213,7 +213,8 @@ Here is an example using Tessel's I2C protocol:
 var port = tessel.port.A;
 var slaveAddress = 0xDE;
 var i2c = new port.I2C(slaveAddress)
-i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+var readLength = 4;
+i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), readLength, function (err, rx) {
   console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
 })
 ```
