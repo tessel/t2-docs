@@ -5,6 +5,7 @@
   * [Pin mapping](#pin-mapping)
   * [Digital pins](#digital-pins)
   * [Analog pins](#analog-pins)
+  * [Interrupts](#interrupt-pins)
   * [PWM pins](#pwm-pins)
   * [SPI](#spi)
   * [I2C](#i2c)
@@ -12,7 +13,7 @@
 * [Button and LEDs](#button-and-leds)
 * [USB ports](#usb-ports)
 
-When you `require('tessel')` within a script which is executed on Tessel 2, this loads a library which interfaces with the Tessel 2 hardware, including pins, ports, and LEDs, just like Tessel 1 ([Tessel 1 hardware documentation](https://github.com/tessel/t1-docs/blob/master/hardware-api.md)). The code for Tessel 2's hardware object can be found [here](https://github.com/tessel/t2-firmware/blob/master/node/tessel.js).
+When you `require('tessel')` within a script which is executed on Tessel 2, this loads a library which interfaces with the Tessel 2 hardware, including pins, ports, and LEDs, just like Tessel 1 ([Tessel 1 hardware documentation](https://github.com/tessel/t1-docs/blob/master/hardware-api.md)). The code for Tessel 2's hardware object can be found [here](https://github.com/tessel/t2-firmware/blob/master/node/tessel-export.js).
 
 ## Ports and pins
 
@@ -38,23 +39,25 @@ The module ports are not just for modules! They can also be used as flexible, si
 The pin capabilities for ports A and B are as follows:
 
 | Port | Pin | Digital I/O | SCL | SDA | SCK | MISO | MOSI | TX | RX | Analog In | Analog Out | Interrupt | PWM |
-|------|-----|-------------|-----|-----|-----|------|------|----|----|-----------|------------|-----------|-----|
-| A    | 0   | ✓           | ✓   |     |     |      |      |    |    |           |            |           |     |
-| A    | 1   | ✓           |     | ✓   |     |      |      |    |    |           |            |           |     |
-| A    | 2   | ✓           |     |     | ✓   |      |      |    |    |           |            | ✓         |     |
-| A    | 3   | ✓           |     |     |     | ✓    |      |    |    |           |            |           |     |
-| A    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |     |
-| A    | 5   | ✓           |     |     |     |      |      | ✓  |    |           |            | ✓         | ✓   |
-| A    | 6   | ✓           |     |     |     |      |      |    | ✓  |           |            | ✓         | ✓   |
-| A    | 7   | ✓           |     |     |     |      |      |    |    | ✓         |            | ✓         |     |
-| B    | 0   | ✓           | ✓   |     |     |      |      |    |    | ✓         |            |           |     |
-| B    | 1   | ✓           |     | ✓   |     |      |      |    |    | ✓         |            |           |     |
-| B    | 2   | ✓           |     |     | ✓   |      |      |    |    | ✓         |            | ✓         |     |
-| B    | 3   | ✓           |     |     |     | ✓    |      |    |    | ✓         |            |           |     |
-| B    | 4   | ✓           |     |     |     |      | ✓    |    |    | ✓         |            |           |     |
-| B    | 5   | ✓           |     |     |     |      |      | ✓  |    | ✓         |            | ✓         | ✓   |
-| B    | 6   | ✓           |     |     |     |      |      |    | ✓  | ✓         |            | ✓         | ✓   |
-| B    | 7   | ✓           |     |     |     |      |      |    |    | ✓         | ✓          | ✓         |     |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A | 0 | ✓ | ✓ |   |   |   |   |   |   |   |   |   |   |
+| A | 1 | ✓ |   | ✓ |   |   |   |   |   |   |   |   |   |
+| A | 2 | ✓ |   |   | ✓ |   |   |   |   |   |   | ✓ |   |
+| A | 3 | ✓ |   |   |   | ✓ |   |   |   |   |   |   |   |
+| A | 4 | ✓ |   |   |   |   | ✓ |   |   | ✓ |   |   |   |
+| A | 5 | ✓ |   |   |   |   |   | ✓ |   |   |   | ✓ | ✓ |
+| A | 6 | ✓ |   |   |   |   |   |   | ✓ |   |   | ✓ | ✓ |
+| A | 7 | ✓ |   |   |   |   |   |   |   | ✓ |   | ✓ |   |
+| B | 0 | ✓ | ✓ |   |   |   |   |   |   | ✓ |   |   |   |
+| B | 1 | ✓ |   | ✓ |   |   |   |   |   | ✓ |   |   |   |
+| B | 2 | ✓ |   |   | ✓ |   |   |   |   | ✓ |   | ✓ |   |
+| B | 3 | ✓ |   |   |   | ✓ |   |   |   | ✓ |   |   |   |
+| B | 4 | ✓ |   |   |   |   | ✓ |   |   | ✓ |   |   |   |
+| B | 5 | ✓ |   |   |   |   |   | ✓ |   | ✓ |   | ✓ | ✓ |
+| B | 6 | ✓ |   |   |   |   |   |   | ✓ | ✓ |   | ✓ | ✓ |
+| B | 7 | ✓ |   |   |   |   |   |   |   | ✓ | ✓ | ✓ |   |
+
+
 
 If you're newer to hardware and these functions look like alphabet soup to you, take a look at our [communication protocols documentation](https://tessel.io/docs/communicationProtocols) to get an idea of how these pins should be used.
 
@@ -93,6 +96,92 @@ pin.analogRead(function(error, value) {
 });
 ```
 
+### Interrupt Pins
+
+Interrupts allow us to register events based on state changes in a pin. Pins
+2, 5, 6, 7 on both Ports are available for interrupts.
+
+Take a look at the following circuit. While the switch is open, pin2 will be
+low. When the button is pressed we'll complete the circuit and the voltage at
+pin2 will rise to 3.3V.
+
+![Interrupt Circuit](https://s3.amazonaws.com/technicalmachine-assets/tutorials/hardware-api/interrupt-circuit.png)
+
+Let's turn on the green LED when the button is pressed. Here's one way of doing
+it.
+
+```js
+var tessel = require('tessel'); // Import tessel
+
+// Initialize our pins
+var green = tessel.led[2];
+var pin2 = tessel.port.A.pin[2];
+
+// Turn off the green LED
+green.off();
+
+// Every 10 milliseconds check to see if the button was pressed
+setInterval(function() {
+  pin2.read(function(error, value) {
+
+    // button was pressed
+    if (value === 1) {
+      green.on();
+    }
+  });
+}, 10);
+
+```
+
+This is pretty inefficient. We're spending a lot of time (every 10 millseconds)
+manually checking to see if the button was pressed. Let's just tell the
+processor to run some code when the voltage rises.
+
+```js
+var tessel = require('tessel'); // Import tessel
+
+// Initialize our pins
+var green = tessel.led[2];
+var pin2 = tessel.port.A.pin[2];
+
+// Turn off the green LED
+green.off();
+
+// Register an event. When the voltage on pin2 rises, turn on the green LED.
+pin2.on('rise', function() {
+  green.on();
+});
+
+```
+
+We tell the processor to invoke our callback function when pin2 rises (button
+has been pressed). We don't have to continuously poll to see if the voltage
+has risen. We can just register our listener and move on.
+
+#### Usage
+
+```js
+// Invoke the callback whenever the event occurs
+pin.on(eventName, callback);
+
+// Invoke the callback the first time the event occurs
+pin.once(eventName, callback);
+```
+
+#### Available Events
+
+eventName | description           | notes
+----------|-----------------------|------
+rise      | pin voltage rises     |
+fall      | pin voltage falls     |
+change    | pin voltage changes   | Passes current value of pin to callback
+high\*    | pin voltage goes high | Only available via pin.once()
+low\*     | pin voltage goes low  | Only available via pin.once()
+
+\* Only one of these events may be registered at a time.
+
+[More information on interrupts](https://www.sparkfun.com/tutorials/326)
+
 ### PWM pins
 
 **PWM pins** are pulse-width modulated pins ([wiki link](http://en.wikipedia.org/wiki/Pulse-width_modulation)). Essentially, PWM is a digital signal that spends between 0% and 100% of its time pulled high/on (this is its "duty cycle"). You can set the PWM pins to any value between 0 and 1 to approximate an analog signal. PWM is often used to control servo speeds or LED brightness.
@@ -113,6 +202,7 @@ myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-setting
 `pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. `pwmFrequency` is capable of frequencies from 1Hz to 5kHz.
 
+
 ### I2C
 
 An I2C channel uses the SCL and SDA pins (0 and 1 on Tessel 2). If you are unfamiliar with the I2C protocol, please see the [communication protocols tutorial](https://tessel.io/docs/communicationProtocols#i2c).
@@ -123,10 +213,19 @@ Here is an example using Tessel's I2C protocol:
 var port = tessel.port.A;
 var slaveAddress = 0xDE;
 var i2c = new port.I2C(slaveAddress)
-i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+var readLength = 4;
+i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), readLength, function (err, rx) {
   console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
 })
 ```
+
+### Terms Used
+
+The following sections use industry standard technical terms that are considered non-inclusive. They are used here in an explicitly technical manner and only to be accurate in describing these wire communication protocols. The terms are used strictly as defined here:
+
+**Master:** A machine or device directly controlling another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/master#master__7))
+
+**Slave:** A device, or part of one, directly controlled by another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/slave#slave__7))
 
 ### SPI
 
