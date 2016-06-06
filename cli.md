@@ -87,6 +87,5 @@ During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files
     * `wep` WEP network, password required
     * `psk` WPA Personal, password required
     * `psk2` WPA2 Personal, reccomended, password required & default if password is given without security
-  * `[--trigger on/off]`
-    * `on` turn on the most recently used access point
-    * `off` turn off the current access point
+  * `[--off]` turn on the most recently used access point
+  * `[--on]` turn off the current access point
