@@ -50,7 +50,7 @@ Along with the package.json and index.js included in the `t2 init` process, ther
 * `t2 rename` change the name of a Tessel
 
 ### Code Deployment 
-During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files to let it know which files it should bundle up and push over to Tessel. In the default bundling process, CLI takes the file passed into the `run` or `push` commands and finds all its dependencies by following the 'require' statements (we use [Browserify](https://github.com/substack/browserify-handbook#how-browserify-works) to do this).
+During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files to let it know which files it should bundle up and push over to Tessel. In the default bundling process, CLI takes the file passed into the `run` or `push` command and uses it as an entry point to build a dependency graph (similar to [Browserify](https://github.com/substack/browserify-handbook#how-browserify-works)). Once the dependencies are known, binary modules are replaced by pre-compiled (for mips) binaries, assets are copied, and everything is tarred before sent to the awaiting Tessel.
 * `t2 run <file>` copy the file and its dependencies into Tessel's RAM & run immediately. Use this during development of your device application.
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
