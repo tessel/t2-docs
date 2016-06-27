@@ -14,12 +14,12 @@ The best place to find API documentation for a Tessel module is through the link
 
 ## Quick links
 
-* [See all the modules and find their API documentation](//tessel.io/modules)
-* [Learn how to use modules on the start page](//start.tessel.io/modules)
+* [See all the modules and find their API documentation](https://tessel.io/modules)
+* [Learn how to use modules on the start page](http://tessel.github.io/t2-start/)
 * [Metadata about tenpin, USB, and community modules, including compatibility](https://github.com/tessel/hardware-modules)
-* [Hardware docs for Tessel's first-party tenpin modules](https://github.com/tessel/hardware/blob/master/modules-overview.md)
-* [How to make a module](//tessel.io/diy)
-* [Communication protocols 101](https://tessel.io/docs/communicationProtocols)
+* [Hardware docs for Tessel's first-party, tenpin modules](https://github.com/tessel/hardware/blob/master/modules-overview.md)
+* [How to make a module](/Tutorials/Making_Your_Own_Module.html)
+* [Communication protocols 101](/Tutorials/Communication_Protocols.html)
 
 ## Module design philosophy
 
