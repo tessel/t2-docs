@@ -371,7 +371,7 @@ To help you get started creating your own custom modules, here is a list of the 
 [servo_module]: https://tessel.io/modules#module-servo
 [servo_schematic]: http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.pdf
 [climate_module]: https://tessel.io/modules#module-climate
-[pir_project]: https://projects.tessel.io/projects/pir
+[pir_project]: https://tessel.io/modules#pir
 [button_project_page]: https://projects.tessel.io/projects/button-proto-module/
 [orig_button_project_page]: https://projects.tessel.io/projects/a-button-on-tessel
 [comm_protocols]: https://tessel.io/docs/communicationProtocols
