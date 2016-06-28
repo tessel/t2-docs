@@ -2,17 +2,17 @@ Developer guide to Tessel 2 Docs Gitbook
 ============
 
 # Requirements
-The docs are build using a command line tool called [GitBook](https://www.npmjs.com/package/gitbook), which requires:
+The docs are built using a command line tool called [GitBook](https://www.npmjs.com/package/gitbook), which requires:
 
 * [Node Version 4 or higher](https://nodejs.org/en/)
 * [NPM Version 2 or higher](https://docs.npmjs.com/getting-started/installing-node)
 
 # Running locally
 
-* `git clone https://github.com/tessel/t2-docs.git`
-* `cd t2-docs`
-* `npm install`
-* `npm start`
+* Clone this repo: `https://github.com/tessel/t2-docs.git` ([Learn more here](https://help.github.com/articles/cloning-a-repository/))
+* Moving into the docs directory: `cd t2-docs`
+* Install the project dependecies: `npm install`
+* Start the documentation generation: `npm start`
 
 # Changing the contents
 
