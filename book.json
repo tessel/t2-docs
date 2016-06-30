@@ -5,7 +5,7 @@
         "readme": "Introduction.md"
       },
     "catalog": "all",
-    "ignores": ["_book", ".git"],
+    "ignores": ["_book", "node_modules"],
     "unchanged": [],
     "plugins" : [ "anchors" ]
 }

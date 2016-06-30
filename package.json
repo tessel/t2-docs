@@ -1,0 +1,27 @@
+{
+  "name": "t2-docs",
+  "version": "1.0.0",
+  "description": "The documentation site for the Tessel 2",
+  "dependencies": {
+    "gitbook-plugin-anchors": "^0.7.0"
+  },
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0",
+    "gitbook-summary": "^1.1.2"
+  },
+  "scripts": {
+    "build": "book sm",
+    "postinstall": "gitbook install",
+    "start": "npm run build && gitbook serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tessel/t2-docs.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/tessel/t2-docs/issues"
+  },
+  "homepage": "https://github.com/tessel/t2-docs#readme"
+}
