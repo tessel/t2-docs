@@ -194,7 +194,7 @@ var tessel = require('tessel'); // Import tessel
 var port = tessel.port.A; // Select one of the two ports
 var myPin = port.pwm[0]; // Equivalent to port.digital[0]
 // Tell the Tessel that the frequency of its pwm pins is 50 Hz (application specific)
-tessel.pwmFrequency(980);
+tessel.pwmFrequency(50);
 // Set duty cycle
 myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 ```
