@@ -1,0 +1,11 @@
+{
+    "bookname": "Tessel 2 Documentation",
+    "structure":
+      {
+        "readme": "Introduction.md"
+      },
+    "catalog": "all",
+    "ignores": ["_book", "node_modules"],
+    "unchanged": [],
+    "plugins" : [ "anchors" ]
+}
