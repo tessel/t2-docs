@@ -7,9 +7,9 @@
   * [Modules](API/Modules.md)
   * [Network API](API/Network_API.md)
 - Debugging
-  * [LAN Discovery](debugging/LAN_Discovery.md)
+  * [Lan Discovery](debugging/lan_discovery.md)
   * [Repos](debugging/Repos.md)
-  * [USB](debugging/USB.md)
+  * [Usb](debugging/usb.md)
 - Tutorials
   * [Communication Protocols](Tutorials/Communication_Protocols.md)
   * [Making Your Own Module](Tutorials/Making_Your_Own_Module.md)
