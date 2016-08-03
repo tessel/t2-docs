@@ -2,7 +2,7 @@
 Networking hardware which creates a local area network over Wifi
 
 ## analog
-In an electrical signal, existing in a continuous range, as opposed to the discrete ranges of digital. [Sparkfun has a good writeup on analog versus digital](https://learn.sparkfun.com/tutorials/analog-vs-digital) if you want to learn more.
+In an electrical signal, existing in a continuous range, as opposed to the discrete ranges of digital. <a href="https://learn.sparkfun.com/tutorials/analog-vs-digital">Sparkfun has a good writeup on analog versus digital</a> if you want to learn more.
 
 ## API
 Application program interface: a set of tools and protocols which can be used to build software. In the case of Tessel, the hardware API is a library you can use to connect to modules, manipulate LEDs, and call out specific pins
@@ -11,16 +11,16 @@ Application program interface: a set of tools and protocols which can be used to
 Command line interface: a tool which lets you interact with a program (or in the case of Tessel, with the Tessel) via text-based commands in the command line, or terminal
 
 ## communication protocols
-Defined ways of communicating, e.g. a map between timed toggling of digital signals and hexadecimal values
+Defined ways of communicating, e.g. a map between timed toggling of digital signals and hexadecimal values. Learn more in the <a href="/Tutorials/Communication_Protocols.html">Communication Protocols doc</a>.
 
 ## digital
-In an electrical signal, existing at discrete/binary values: on or off, zero or one. This can be used simply, e.g. on/off states of a switch or light, or you can toggle digital signals very quickly to encode complex messaging with [communication protocols](/Tutorials/Communication_Protocols.html). [Sparkfun has a good writeup on analog versus digital](https://learn.sparkfun.com/tutorials/analog-vs-digital) if you want to learn more.
+In an electrical signal, existing at discrete/binary values: on or off, zero or one. This can be used simply, e.g. on/off states of a switch or light, or you can toggle digital signals very quickly to encode complex messaging with <a href="/Tutorials/Communication_Protocols.html">communication protocols</a>. <a href="https://learn.sparkfun.com/tutorials/analog-vs-digital">Sparkfun has a good writeup on analog versus digital</a> if you want to learn more.
 
 ## GPIO
 General purpose input and output: electrical pins which can be configured for various purposes
 
 ## I2C
-A hardware communication protocol which uses two wires: SCL and SDA. Read more about it in the [Communication Protocols doc](/Tutorials/Communication_Protocols.html)
+A hardware communication protocol which uses two wires: SCL and SDA. Read more about it in the <a href="/Tutorials/Communication_Protocols.html">Communication Protocols doc</a>.
 
 ## interrupt
 An electrical signal which tells the processor that something needs immediate attention
@@ -74,7 +74,7 @@ See: UART
 A device or part of a device which is directly controlled by another
 
 ## SPI
-A hardware communication protocol which uses SCK, MISO, MOSI, and SS/CS (chip select) lines. Learn more in the [Communication Protocols doc](/Tutorials/Communication_Protocols.html)
+A hardware communication protocol which uses SCK, MISO, MOSI, and SS/CS (chip select) lines. Learn more in the <a href="/Tutorials/Communication_Protocols.html">Communication Protocols doc</a>.
 
 ## T2
 Tessel 2
@@ -86,4 +86,4 @@ A piece of hardware built to interface with Tessel's module ports, paired with a
 Transmit: the wire in a UART interface which sends data to the controlled device
 
 ## UART
-Also referred to as serial. A communication protocol using the RX and TX lines. Learn more in the [Communication Protocols doc](/Tutorials/Communication_Protocols.html)
+Also referred to as serial. A communication protocol using the RX and TX lines. Learn more in the <a href="/Tutorials/Communication_Protocols.html">Communication Protocols doc</a>.
