@@ -7,8 +7,18 @@
 
 ## Installation
 Prerequisites for installation: [Node.js](https://nodejs.org/) 4.2.x or greater
+On Linux platform, you may install nodejs like this
+```
+wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
+sudo apt-get install nodejs
+```
 
-`npm install -g t2-cli`
+You should never install npm packages with sudo. You may put them in a directory, such as `/home/s/`
+```
+sudo install -o $(id -u) -g $(id -g) -d /home/s
+npm config set prefix /home/s
+npm install -g t2-cli
+```
 
 The best place to go next is [the Tessel 2 start experience](http://tessel.io/t2-cli), which will walk you through a tutorial.
 
