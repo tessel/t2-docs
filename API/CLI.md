@@ -17,6 +17,15 @@ You should never install npm packages with sudo. You may put them in a directory
 ```
 sudo install -o $(id -u) -g $(id -g) -d /home/s
 npm config set prefix /home/s
+```
+
+t2-cli package requires libusb-1.0.0-dev and libudev-dev packages
+```
+sudo apt-get install libusb-1.0-0-dev libudev-dev
+```
+
+Download, compile and install t2-cli
+```
 npm install -g t2-cli
 ```
 
