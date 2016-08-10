@@ -32,7 +32,7 @@ npm install -g t2-cli
 
 Install udev rules for Tessel 2.  This is the ONLY time that you run npm with sudo
 ```
-sudo PATH=$PATH t2 install-drivers
+sudo env PATH=$PATH t2 install-drivers
 sudo udevadm control --reload-rules
 ```
 
