@@ -7,8 +7,34 @@
 
 ## Installation
 Prerequisites for installation: [Node.js](https://nodejs.org/) 4.2.x or greater
+On Linux platform, you may install nodejs like this
+```
+wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
+sudo apt-get install nodejs
+```
 
-`npm install -g t2-cli`
+You should never install npm packages with sudo. You may put them in a directory, such as `/home/s/`
+```
+sudo install -o $(id -u) -g $(id -g) -d /home/s
+npm config set prefix /home/s
+export PATH=/home/s/bin:$PATH  # You should set it permanently in ~/.bash or ~/.profile
+```
+
+t2-cli package requires libusb-1.0.0-dev and libudev-dev packages
+```
+sudo apt-get install libusb-1.0-0-dev libudev-dev
+```
+
+Download, compile and install t2-cli
+```
+npm install -g t2-cli
+```
+
+Install udev rules for Tessel 2.  This is the ONLY time that you run npm with sudo
+```
+sudo env PATH=$PATH t2 install-drivers
+sudo udevadm control --reload-rules
+```
 
 The best place to go next is [the Tessel 2 start experience](http://tessel.io/t2-cli), which will walk you through a tutorial.
 
