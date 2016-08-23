@@ -12,7 +12,7 @@ In embedded electronics, there are four common protocols and Tessel [supports th
 
 This guide will provide a brief overview of the protocols and cover some of the strengths and weaknesses of each.
 
-You can see a mapping of which pins can be used for which protocols [on the Tessel docs page](https://github.com/tessel/t2-docs/blob/master/hardware-api.md#pin-mapping).
+You can see a mapping of which pins can be used for which protocols [on the Tessel docs page](https://tessel.gitbooks.io/t2-docs/content/API/Hardware_API.html).
 
 ## Quick Reference
 Most of the time, you will choose your protocol based on the parts you are using when designing your module. Other things to consider are the pins you have available, as well as your communication speed requirements. The following table can be used as a quick reference for the more detailed explanations of each protocol below.
