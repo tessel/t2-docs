@@ -32,7 +32,7 @@ This command basically clears the cache of mDNS devices so the next time you run
 There could also be an issue with the network you're computer is using where it blocks mDNS traffic. We've seen the latter case numerous times on company wifi networks. If it is a network configuration issue - you'll have solve that social engineering problem on your own.
 
 ## An issue with advertisement
-To determine if it's an issue with Tessel not advertising properly, you'll need to get [root access](https://github.com/tessel/onboarding/blob/master/SSH-AND-DTERM.md) to your Tessel. Then run `ps` to check if the mDNS service is actually running on Tessel:
+To determine if it's an issue with Tessel not advertising properly, you'll need to get [root access](/Root_Access.html) to your Tessel. Then run `ps` to check if the mDNS service is actually running on Tessel:
 ```
  1259 root       904 S    dns-sd -R Frank _tessel._tcp local 22
 ```
