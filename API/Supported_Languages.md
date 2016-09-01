@@ -1,15 +1,15 @@
 # Supported languages
 
-## JavaScript/Node
-Tessel 2 has full support for JavaScript and Node.JS. The relevant repos can be found here:
+## JavaScript/Node.js
+Tessel 2 has full support for JavaScript and Node.js. The relevant repos can be found here:
 
 * [Firmware support for JavaScript/Node](https://github.com/tessel/t2-firmware)
 * [CLI support for JavaScript/Node](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)
 
 ### Binary modules
-There is some support for modules with binary dependencies on Tessel 2.
+There is support for binary modules on Tessel 2 that we have precompiled.
 
-The best way to find out whether the module you want is supported is to try it. If it's supported, it will work! If it is not supported, you will get an error message like this ([Error message source in CLI](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)):
+The best way to find out whether the module you want is available is to try deploying it. If it's supported, it will work! If it is not supported, you will get an error message like this ([Error message source in CLI](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)):
 
 ```
 Pre-compiled module is missing: ${name}.
@@ -28,4 +28,4 @@ The Tessel team is working toward first-class support for Rust. If you're intere
 ## How to add support for more languages
 Interested in adding support for a new language to Tessel 2's CLI? Here is a detailed blog post on the six components you will need: [Interfacing with the Language Plugin API for Tessel 2](https://tessel.io/blog/148706216397/interfacing-with-the-language-plugin-api-for)
 
-It is worth noting that [support of Python for Tessel 2](https://github.com/tcr/tessel-python) was originally planned, but is no longer in active development. [Read the blog post](https://tessel.io/blog/146714850172/ramping-up-rust-backing-away-from-python-johnny) explaining this decision.
+(It is worth noting that [support of Python for Tessel 2](https://github.com/tcr/tessel-python) was originally planned, but is no longer in active development. [Read the blog post](https://tessel.io/blog/146714850172/ramping-up-rust-backing-away-from-python-johnny) explaining this decision.)
