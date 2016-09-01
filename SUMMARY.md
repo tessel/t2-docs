@@ -9,6 +9,8 @@
 - Debugging
   * [LAN Discovery](Debugging/LAN_Discovery.md)
   * [Repos](Debugging/Repos.md)
+  * [Root Access](Debugging/Root_Access.md)
+  * [Technical Overview](Debugging/Technical_Overview.md)
   * [USB](Debugging/USB.md)
 - Tutorials
   * [Communication Protocols](Tutorials/Communication_Protocols.md)
