@@ -3,9 +3,9 @@
 - API
   * [CLI](API/CLI.md)
   * [Hardware API](API/Hardware_API.md)
-  * [Languages](API/Languages.md)
   * [Modules](API/Modules.md)
   * [Network API](API/Network_API.md)
+  * [Supported Languages](API/Supported_Languages.md)
 - Debugging
   * [LAN Discovery](Debugging/LAN_Discovery.md)
   * [Repos](Debugging/Repos.md)
