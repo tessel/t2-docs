@@ -1,6 +1,6 @@
 Developer guide to Tessel 2 Docs Gitbook
 ============
-+[![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](https://github.com/tessel/project/blob/master/CONDUCT.md)
+[![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](https://github.com/tessel/project/blob/master/CONDUCT.md)
 
 # Requirements
 The docs are built using a command line tool called [GitBook](https://www.npmjs.com/package/gitbook), which requires:
