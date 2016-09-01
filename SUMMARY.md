@@ -7,11 +7,11 @@
   * [Modules](API/Modules.md)
   * [Network API](API/Network_API.md)
 - Debugging
-  * [Lan Discovery](debugging/lan_discovery.md)
-  * [Repos](debugging/Repos.md)
-  * [Root Access](debugging/Root_Access.md)
-  * [Technical Overview](debugging/Technical_Overview.md)
-  * [Usb](debugging/usb.md)
+  * [LAN Discovery](Debugging/LAN_Discovery.md)
+  * [Repos](Debugging/Repos.md)
+  * [Root Access](Debugging/Root_Access.md)
+  * [Technical Overview](Debugging/Technical_Overview.md)
+  * [USB](Debugging/USB.md)
 - Tutorials
   * [Communication Protocols](Tutorials/Communication_Protocols.md)
   * [Making Your Own Module](Tutorials/Making_Your_Own_Module.md)
