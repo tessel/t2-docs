@@ -23,6 +23,16 @@ This guide is intended to help code contributors understand how relevant system 
 - [Links to more information](#more-useful-links)
 
 ## Relevant Github Repositories
+Quick guide to the Tessel stack (in order of complexity):
+
+Level | Stack | Repo
+--- | --- | ---
+User / Module Code | JS | (Many)
+CLI | JS | [t2-cli](https://github.com/tessel/t2-cli)
+Tessel Library | Linux / JS / Comms | [t2-firmware](https://github.com/tessel/t2-firmware)
+OpenWRT | Linux / C / Shell / More | [t2-firmware](https://github.com/tessel/t2-firmware)
+SSH/GPIO Daemons | Linux / C | [t2-firmware](https://github.com/tessel/t2-firmware)
+Firmware | C / Comms | [t2-firmware](https://github.com/tessel/t2-firmware)
 
 ### Tessel 2 Core Repos:
 You can find all of the Tessel repositories [on the organization page](https://github.com/tessel/) but this section provides some guidance over relevant Tessel 2-specific repositories.
