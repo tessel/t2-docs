@@ -214,8 +214,8 @@ var port = tessel.port.A;
 var slaveAddress = 0xDE;
 var i2c = new port.I2C(slaveAddress)
 var readLength = 4;
-i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), readLength, function (err, rx) {
-  console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
+i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), readLength, function (error, dataReceived) {
+  console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', dataReceived);
 })
 ```
 
@@ -241,8 +241,8 @@ var spi = new port.SPI({
   cpha: 0, // clock phase
 });
 
-spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-  console.log('buffer returned by SPI slave:', rx);
+spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error, dataReceived) {
+  console.log('buffer returned by SPI slave:', dataReceived);
 });
 ```
 
@@ -328,9 +328,9 @@ led.off();
 *
 * Toggles the current state of the led and calls the callback function once that is done.
 */
-led.toggle(function (err) {
-  if (err) {
-    console.log('There was an error with toggling the led.', err);
+led.toggle(function (error) {
+  if (error) {
+    console.log('There was an error with toggling the led.', error);
   } else {
     console.log('The green led is now on OR off!');
   }
