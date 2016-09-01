@@ -67,7 +67,8 @@ There are 9 compatible 10-pin hardware modules for Tessel 2 available at the tim
 * [Servo Module](https://github.com/tessel/servo-pca9685)
 
 ##### USB Modules
-Tessel supports the following kind of USB modules which you can find from many online vendors:
+Tessel supports interfacing with USB devices. Here are libraries we support for Tessel to interoperate with USB modules, available from many vendors:
+
 * [Bluetooth Low Energy Dongles](https://github.com/sandeepmistry/noble)
 * Cellular (3G/4G) Dongles (no Github module, it just works through the Node `http` module and similar for other languages)
 * [Audio Recording/Playback](https://github.com/tessel/node-audiovideo)
