@@ -294,18 +294,18 @@ We took a [simple Arduino library][screen_arduino_code] for this screen and [por
 Our API is very simple and exposes just one event and a few methods.
 
 #### Event
-Nokia5110.**on**('ready', callback(err, screen)) - Emitted when the screen object is first initialized
+Nokia5110.**on**('ready', callback(error, screen)) - Emitted when the screen object is first initialized
 
 #### Methods
-Nokia5110.**gotoXY**(x,y,[callback(err)]) - Sets the active cursor location to (x,y)
+Nokia5110.**gotoXY**(x,y,[callback(error)]) - Sets the active cursor location to (x,y)
 
-Nokia5110.**character**(char, [callback(err)]) - Writes a single character to the display
+Nokia5110.**character**(char, [callback(error)]) - Writes a single character to the display
 
-Nokia5110.**string**(data, [callback(err)]) - Writes a string to the display
+Nokia5110.**string**(data, [callback(error)]) - Writes a string to the display
 
-Nokia5110.**bitmap**(bitmapData, [callback(err)]) - Draws a monochrome bitmap from _bitmapData_
+Nokia5110.**bitmap**(bitmapData, [callback(error)]) - Draws a monochrome bitmap from _bitmapData_
 
-Nokia5110.**clear**([callback(err)]) - Clears the display
+Nokia5110.**clear**([callback(error)]) - Clears the display
 
 Nokia5110.**setBacklight**(state) - Turns the backlight on if _state_ is truthy, off otherwise
 

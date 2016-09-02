@@ -162,8 +162,8 @@ var spi = new portA.SPI({
   clockSpeed: 4000000 // 4MHz
 });
 
-spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-  console.log('buffer returned by SPI slave:', rx);
+spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error, dataReceived) {
+  console.log('buffer returned by SPI slave:', dataReceived);
 });
 ```
 
@@ -220,7 +220,7 @@ var portA = tessel.port['A']; // use Port A
 var slaveAddress = 0xDE; // This is the address of the attached module/sensor
 var i2c = new portA.I2C(slaveAddress)
 
-i2c.send(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err) {
+i2c.send(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error) {
   console.log("I'm done sending the data");
   // Can also use err for error handling
 })
