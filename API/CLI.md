@@ -10,7 +10,7 @@ Prerequisites for installation: [Node.js](https://nodejs.org/) 4.2.x or greater
 
 `npm install -g t2-cli`
 
-The best place to go next is [the Tessel 2 start experience](http://tessel.io/t2-cli), which will walk you through a tutorial.
+The best place to go next is [the Tessel 2 start experience](http://tessel.io/t2-start), which will walk you through a tutorial.
 
 ## Updating Tessel 2 On-board OS/Firmware
 
