@@ -184,24 +184,93 @@ low\*     | pin voltage goes low  | Only available via pin.once()
 
 ### PWM pins
 
-**PWM pins** are pulse-width modulated pins ([wiki link](http://en.wikipedia.org/wiki/Pulse-width_modulation)). Essentially, PWM is a digital signal that spends between 0% and 100% of its time pulled high/on (this is its "duty cycle"). You can set the PWM pins to any value between 0 and 1 to approximate an analog signal. PWM is often used to control servo speeds or LED brightness.
+**PWM pins** are pulse-width modulated pins. Essentially, PWM is a digital signal that spends between 0% and 100% of its time pulled high/on (this is its "duty cycle"). You can set the PWM pins to any value between 0 and 1 to approximate an analog signal. PWM is often used to control servo speeds or LED brightness.
 
 Tessel has four PWM pins: pins 5 and 6 on each module port.
 
-Here is an example of setting a PWM pin:
+In the following example, the Tessel will change the color of an RGB LED by changing the duty cycle sent to each color pin over a set interval of time. 
+
+![PWM RGB LED Circuit](https://s3.amazonaws.com/technicalmachine-assets/tutorials/hardware-api/pwm-rgb-circuit.png)
+
 ```js
 var tessel = require('tessel'); // Import tessel
-var port = tessel.port.A; // Select one of the two ports
-var myPin = port.pwm[0]; // Equivalent to port.digital[0]
-// Tell the Tessel that the frequency of its pwm pins is 50 Hz (application specific)
-tessel.pwmFrequency(50);
-// Set duty cycle
-myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
+
+var portA = tessel.port.A; // select port A
+var portB = tessel.port.B; // select port B
+
+var redPin = portA.pwm[0]; // select the first PWM pin on port A, equivalent to portA.pin[5]
+var greenPin = portA.pwm[1];
+var bluePin = portB.pwm[0];
+
+// the starting values of each color out of 255
+var red = 0;
+var green = 0;
+var blue = 0;
+
+// use this to increment the color value without excedding 255
+function stepColor (value, step) {
+  value += step || 10; // add the step, or 10 if step is not used, to the existing value
+  
+  // if the value exceeds 255, then reset it to 0
+  if (value > 255) {
+    value = 0;
+  }
+
+  return value;
+}
+
+// set the signal frequency to 1000 Hz, or 1000 cycles per second
+// this the rate at which Tessel will send the PWM signals
+tessel.pwmFrequency(1000);
+
+// create a loop to run a function at a set interval of time
+setInterval(function() {
+  // increment each color at a unique step
+  red = stepColor(red);
+  blue = stepColor(blue, 5);
+  green = stepColor(green, 20);
+
+  // set how often each pin is turned on out of 100%
+  // divide the value by 255 to get a value between 0 and 1
+  redPin.pwmDutyCycle(red / 255);
+  greenPin.pwmDutyCycle(blue / 255);
+  bluePin.pwmDutyCycle(green / 255);
+}, 500); // set this function to be called every 500 milliseconds, or half a second
 ```
 
 Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-setting
-`pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. `pwmFrequency` is capable of frequencies from 1Hz to 5kHz.
+`pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. 
 
+#### Usage
+
+**tessel.pwmFrequency:**
+
+Set the signal frequency in hertz. 1 hertz equals 1 cycle of signal per second. 
+
+```js
+tessel.pwmFrequency(number);
+```
+
+option | type   | description                         | required
+-------|--------|-------------------------------------|---------
+number | Number | minimum value 1, maximum value 5000 | yes
+
+
+**pin.pwmDutyCycle:**
+
+Set the percentage amount of time the pin is active each cycle of signal.
+
+```js
+pin.pwmDutyCycle(number);
+```
+
+option | type   | description                                | required
+-------|--------|--------------------------------------------|---------
+number | Number | minimum value 0, maximum value 1, e.g. 0.6 | yes
+
+![PWM Duty Cycle Diagram](https://s3.amazonaws.com/technicalmachine-assets/tutorials/hardware-api/pwm-cycle-diagram.png)
+
+[More information on pulse-width modulation.](https://learn.sparkfun.com/tutorials/pulse-width-modulation)
 
 ### I2C
 
