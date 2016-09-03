@@ -10,7 +10,7 @@ There are three types of modules:
 * USB: any USB device with an API Tessel can use
 * Community: any piece of hardware with an API Tessel can use, with instructions on how to connect the hardware to Tessel
 
-The best place to find API documentation for a Tessel module is through the links on the [modules page](//tessel.io/modules).
+The best place to find API documentation for a Tessel module is through the links on the [modules page](https://tessel.io/modules).
 
 ## Quick links
 
