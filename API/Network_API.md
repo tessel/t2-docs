@@ -165,28 +165,6 @@ tessel.network.wifi.reset(function (error) {
 });
 ```
 
-### Properties
-
-- [`isConnected`](#isConnected)
-
-### isConnected
-
-The state of Tessel's connection to wifi, returns true or false.
-
-```js
-tessel.network.wifi.isConnected;
-```
-
-#### Example
-
-```js
-if (tessel.network.wifi.isConnected) {
-  // Tessel is connected to wifi
-} else {
-  // Tessel is not connected to wifi
-}
-```
-
 ### Events
 
 The `WifI` Class inherits from the Node.js [`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter) Class, so methods such as [`on`](https://nodejs.org/api/events.html#events_emitter_on_eventname_listener), [`once`](https://nodejs.org/api/events.html#events_emitter_once_eventname_listener), and [`removeListener`](https://nodejs.org/api/events.html#events_emitter_removelistener_eventname_listener) can be used with the following events:
