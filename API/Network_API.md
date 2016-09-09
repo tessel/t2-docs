@@ -54,14 +54,19 @@ tessel.network.wifi.connect({
 Returns the settings for the current connection, includes ssid (network name), security, and IP address.
 
 ```js
-tessel.network.wifi.connection();
+tessel.network.wifi.connection(callback);
 ```
 
 #### Example
 
 ```js
-var currentSettings = tessel.network.wifi.connection();
-console.log(currentSettings.ssid); // logs the name of the wifi network being used by Tessel
+tessel.network.wifi.connection(function(error, settings) {
+  if (error) {
+    throw error;
+  }
+
+  console.log(settings.ssid); // logs the name of the wifi network being used by Tessel
+});
 ```
 
 ### disable
