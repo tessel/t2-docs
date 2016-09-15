@@ -4,14 +4,13 @@
 
 This document provides hardware overviews for each Tessel module:
 
-*  [Accelerometer](https://github.com/tessel/hardware/blob/master/modules-overview.md#accelerometer)
-*  [Ambient](https://github.com/tessel/hardware/blob/master/modules-overview.md#ambient)
-*  [Climate](https://github.com/tessel/hardware/blob/master/modules-overview.md#climate)
-*  [GPS](https://github.com/tessel/hardware/blob/master/modules-overview.md#gps)
-*  [MicroSD Card](https://github.com/tessel/hardware/blob/master/modules-overview.md#micro-sd-card)
-*  [Relay](https://github.com/tessel/hardware/blob/master/modules-overview.md#relay)
-*  [RFID](https://github.com/tessel/hardware/blob/master/modules-overview.md#rfid)
-*  [Servo](https://github.com/tessel/hardware/blob/master/modules-overview.md#servo)
+*  [Accelerometer](#accelerometer)
+*  [Ambient](#ambient)
+*  [Climate](#climate)
+*  [GPS](#gps)
+*  [Relay](#relay)
+*  [RFID](#rfid)
+*  [Servo](#servo)
 
 ## Accelerometer
 
@@ -62,19 +61,14 @@ Parameter | Value
 ----------|------
 TM part # | TM-02-XX
 Latest version | TM-02-02
-Key components | [SI7005-B-GM](http://www.silabs.com/Support%20Documents/TechnicalDocs/Si7005.pdf) sensor
+Key components | [SI7020-A20](http://www.silabs.com/Support%20Documents/TechnicalDocs/Si7020-A20.pdf) sensor
 Current consumption (rated max) | 565 microamps
 Current consumption (average) | 320 microamps
 Communication protocol | I2C, GPIO
 
 ### Notes
 
-* There is an important errata with the Si7005 chip (documented only in [this application note](http://www.silabs.com/Support%20Documents/TechnicalDocs/AN607.pdf)) which says:
-
-> The Si7005 should not be on the same bus as other I2C devices when it is active. It acknowledges data
-bytes that match its address. This issue has been reolved with other members of the Si70xx family
-
-In practice, this means that the TM-12-04 Climate module should always be used on its own I2C bus. Fortunately, two I2C busses exist on Tessel: one is shared between module ports A and B, the other between C and D.
+Temperature of the climate module can be affected by proximity to the Tessel processor.
 
 ## GPS
 
