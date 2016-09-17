@@ -10,6 +10,7 @@
   * [SPI](#spi)
   * [I2C](#i2c)
   * [UART/Serial](#uart-serial)
+  * [Power management](#power-management)
 * [Button and LEDs](#button-and-leds)
 * [USB ports](#usb-ports)
 
@@ -100,7 +101,7 @@ pin.analogRead(function(error, value) {
 
 Pins 2, 5, 6, 7 on both Ports are available for interrupts.
 
-Interrupts allow us to register events based on state changes in a pin. 
+Interrupts allow us to register events based on state changes in a pin.
 
 #### Usage
 
@@ -134,7 +135,7 @@ Tessel has four PWM pins: pins 5 and 6 on each module port.
 
 **tessel.pwmFrequency:**
 
-Set the signal frequency in hertz. 1 hertz equals 1 cycle of signal per second. 
+Set the signal frequency in hertz. 1 hertz equals 1 cycle of signal per second.
 
 ```js
 tessel.pwmFrequency(number);
@@ -145,7 +146,7 @@ option | type   | description                         | required
 number | Number | minimum value 1, maximum value 5000 | yes
 
 Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-setting
-`pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. 
+`pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again.
 
 **pin.pwmDutyCycle:**
 
@@ -224,6 +225,31 @@ uart.on('data', function (data) {
 // UART objects are streams!
 // pipe all incoming data to stdout:
 uart.pipe(process.stdout);
+```
+
+### Power management
+Tessel 2's firmware turns off power to the port if a program does not require the `tessel` module. However, if `tessel` is required in the code, both will be turned on by default. It is possible to turn off the other module port with an explicit call:
+
+```js
+var tessel = require('tessel');
+
+tessel.close('A'); // A is now closed
+```
+
+In cases requiring more manual control, it is possible to specify the behaviors of both module ports as follows:
+
+```js
+var Tessel = require('tessel-export');
+
+var tessel = new Tessel({
+ ports: {
+   A: false,
+   B: false,
+ }
+});
+
+tessel.open('A'); // A is now open
+tessel.open('B'); // B is now open
 ```
 
 ## Button and LEDs

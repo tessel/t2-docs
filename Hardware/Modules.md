@@ -18,17 +18,17 @@ Measures acceleration in the x, y, and z directions.
 
 ### Quick overview:
 
-Parameter | Value
-----------|------
-TM part # | TM-01-XX
-Latest version | TM-01-02
-Key components | [MMA8452Q](http://www.freescale.com/files/sensors/doc/data_sheet/MMA8452Q.pdf)
+Parameter                       | Value
+--------------------------------|------
+Tessel part #                   | TM-01-XX
+Latest version                  | TM-01-02
+Key components                  | [MMA8452Q](http://www.freescale.com/files/sensors/doc/data_sheet/MMA8452Q.pdf)
 Current consumption (rated max) | 165 microamps
-Current consumption (average) | 165 microamps
-Communication protocol | I2C, GPIO
+Current consumption (average)   | 165 microamps
+Communication protocol          | I2C, GPIO
 
 ### Notes
-*  I2C address can be modified by shorting J3
+*  I2C address can be modified by shorting J3 – see [MMA8452Q datasheet](http://www.nxp.com/files/sensors/doc/data_sheet/MMA8451Q.pdf) 5.11.1 Table 10.
 *  +x = towards the Tessel, +y = G3 --> GND, +z = up
 
 ## Ambient
@@ -88,7 +88,7 @@ Communication protocol | UART, GPIO
 ### Notes
 
 *  The A2235-H is based on CSR SiRFstarIV chipset, which supports a novel GPS fix mode and a variety of low power states.
-*  The A2235-H supports two different data modes: NMEA and SiRF binary mode (also called OSP mode). Technical Machine's default APIs use the module in NMEA mode.
+*  The A2235-H supports two different data modes: NMEA and SiRF binary mode (also called OSP mode). Tessel GPS's default APIs use the module in NMEA mode.
 *  A-GPS is supported with client generated extended ephemeris up to 3 days.
 
 ## Infrared
