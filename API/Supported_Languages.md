@@ -10,17 +10,17 @@ Tessel 2 has full support for JavaScript and Node.js. The relevant repos can be 
 
 There is support for binary modules on Tessel 2 that are precompiled. The best way to find out whether the module you want is available is to try deploying it. The module has been precompiled, it will just work!
 
-For modules that have not been precompiled (you can see the list at [packages.tessel.io](packages.tessel.io)), you will see an error message like this ([Error message source in CLI](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)):
+For modules that have not been precompiled (you can see the list at [packages.tessel.io](packages.tessel.io)), you will see an error message explaining why it cannot be loaded:
 
 ```
-Pre-compiled module is missing: ${name}.
-    This might be caused by any of the following:
-    1. The binary is platform specific and cannot be compiled for OpenWRT.
-    2. A pre-compiled binary has not yet been generated for this module.
-    3. The binary didn't compile correctly for the platform that you're developing on.
-        It's possible that the binary is Linux-only or even OpenWRT specific,
-        try npm installing with "--force" and rerun your deployment command.
-    Please file an issue at https://github.com/tessel/t2-cli/issues/new
+Pre-compiled module is missing: {name of module}.
+This might be caused by any of the following:
+ 1. The binary is platform specific and cannot be compiled for OpenWRT.
+ 2. A pre-compiled binary has not yet been generated for this module.
+ 3. The binary didn't compile correctly for the platform that you're developing on.
+    It's possible that the binary is Linux-only or even OpenWRT specific,
+    try npm installing with "--force" and rerun your deployment command.
+Please file an issue at https://github.com/tessel/t2-cli/issues/new
 ```
 
 Submit an issue and we will look into precompiling it. Our precompilation server lives in the [`t2-compiler` repo](http://github.com/tessel/t2-compiler).
