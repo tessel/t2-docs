@@ -7,9 +7,10 @@ Tessel 2 has full support for JavaScript and Node.js. The relevant repos can be 
 * [CLI support for JavaScript/Node](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)
 
 ### Binary modules
-There is support for binary modules on Tessel 2 that we have precompiled.
 
-The best way to find out whether the module you want is available is to try deploying it. If it's supported, it will work! If it is not supported, you will get an error message like this ([Error message source in CLI](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)):
+There is support for binary modules on Tessel 2 that are precompiled. The best way to find out whether the module you want is available is to try deploying it. The module has been precompiled, it will just work!
+
+For modules that have not been precompiled (you can see the list at [packages.tessel.io](packages.tessel.io)), you will see an error message like this ([Error message source in CLI](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)):
 
 ```
 Pre-compiled module is missing: ${name}.
@@ -21,6 +22,8 @@ Pre-compiled module is missing: ${name}.
         try npm installing with "--force" and rerun your deployment command.
     Please file an issue at https://github.com/tessel/t2-cli/issues/new
 ```
+
+Submit an issue and we will look into precompiling it. Our precompilation server lives in the [`t2-compiler` repo](http://github.com/tessel/t2-compiler).
 
 ## Rust (work in progress)
 The Tessel team is working toward first-class support for Rust. If you're interested in the state of that project, check out the [tessel-rust repo](https://github.com/tessel/rust-tessel).
