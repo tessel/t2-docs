@@ -1,0 +1,7 @@
+h1, h2, h3 { clear: both; }
+
+img.figure-right {
+  float: right;
+  margin: 15px 25px;
+  max-width: 350px;
+}

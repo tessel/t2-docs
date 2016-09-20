@@ -11,6 +11,8 @@
   * [Root Access](Debugging/Root_Access.md)
   * [Technical Overview](Debugging/Technical_Overview.md)
   * [USB](Debugging/USB.md)
+- Modules
+  * [Accelerometer](Modules/Accelerometer.md)
 - Tutorials
   * [Communication Protocols](Tutorials/Communication_Protocols.md)
   * [Interrupts](Tutorials/Interrupts.md)
