@@ -14,10 +14,8 @@
 - Hardware
     * [Modules](/Hardware/Modules.md)
     * [Tessel 2 Overview](/Hardware/Tessel_2_Overview.md)
-  * [Introduction](/Introduction.md)
 - Tutorials
     * [Communication Protocols](/Tutorials/Communication_Protocols.md)
     * [Interrupts](/Tutorials/Interrupts.md)
     * [Making Your Own Module](/Tutorials/Making_Your_Own_Module.md)
     * [Pulse Width Modulation](/Tutorials/Pulse_Width_Modulation.md)
-- Images
