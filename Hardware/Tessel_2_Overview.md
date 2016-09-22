@@ -50,7 +50,7 @@ The additional 5V pin shown in the yellow box is a source of 5V power.
 
 The below table explains how the major components of Tessel 2 are powered.
 
-Component          | Powered by       | Enabled or reset by
+Item               | Powered by       | Enabled or reset by
 -------------------|------------------|-------------------------------------------------
 5V                 | USB cable        | Presence of USB cable with upstream power
 3.3V Mediatek      | 5V               | GPIO on coprocessor, pull resistor to ENABLE
