@@ -325,4 +325,4 @@ Tessel 2's button is not yet exposed in the API – but you can change that! Se
 
 ## USB Ports
 
-USB modules do not need to be accessed through the Tessel object. See [node-audiovideo](https://github.com/tessel/node-audiovideo) for an example USB module.
+USB modules do not need to be accessed through the Tessel object. See [tessel-av](https://github.com/tessel/tessel-av) for an example USB module.
