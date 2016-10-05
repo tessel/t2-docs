@@ -11,6 +11,7 @@
     * [Root Access](/Debugging/Root_Access.md)
     * [Technical Overview](/Debugging/Technical_Overview.md)
     * [USB](/Debugging/USB.md)
+    * [Node Js](/Debugging/NodeJs.md)
 - Hardware
     * [Modules](/Hardware/Modules.md)
     * [Tessel 2 Overview](/Hardware/Tessel_2_Overview.md)
