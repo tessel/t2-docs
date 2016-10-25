@@ -1,9 +1,9 @@
 
-# NodeJs
+# Node.js
 
-Installation instructions of the Tessel CLI can be found here: http://tessel.github.io/t2-start/
+Installation instructions for the Tessel CLI can be found here: [http://tessel.github.io/t2-start/](http://tessel.github.io/t2-start/)
 
-This document will address common problems related to NodeJs usage.
+This document will address common problems related to Node.js usage.
 
 ## NVM
 
