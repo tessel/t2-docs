@@ -37,7 +37,7 @@ If `--name` is not specified, CLI will look for an environment variable, e.g. `e
 
 ### Starting Projects
 * `t2 init` in the current directory, create a package.json and index.js with Hello World code.
-* 
+*
 ### Project Files
 Along with the package.json and index.js included in the `t2 init` process, there are some other files that may be useful for your project:
 * `.tesselignore` similar to .gitignore or [.npmignore](https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package), this file should list any files or directories you want ignored by the T2 bundling and deployment process. This is handy when using the `--full` flag, which tells T2 to bundle everything in the project directory.
@@ -45,18 +45,19 @@ Along with the package.json and index.js included in the `t2 init` process, ther
   * In your JavaScript program, assets listed in the `.tesselinclude` file should always be accessed using `__dirname` (read more about `__dirname` in the [Node.js docs](https://nodejs.org/api/globals.html#globals_dirname)). For example, if there is a file at `public/index.html` and it's listed in your `.tesselinclude`, from your JavaScript program, you'd read it like this: `fs.readFile(path.join(__dirname, "public/index.html"), "utf8", (error, contents) => ...);`.
 
 ### Tessel Management
-* `t2 provision` authorize your computer to access a Tessel over SSH (USB-connected Tessel only)
-* `t2 list` show what Tessels are available over WiFi and USB.
-* `t2 rename` change the name of a Tessel
+* `t2 provision` will authorize your computer to access a Tessel over SSH. (USB-connected Tessel only)
+* `t2 list` will show what Tessels are available over WiFi and USB.
+* `t2 rename` will change the name of a Tessel.
+* `t2 reboot` will reboot your Tessel.
 
-### Code Deployment 
+### Code Deployment
 During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files to let it know which files it should bundle up and push over to Tessel. In the default bundling process, CLI takes the file passed into the `run` or `push` command and uses it as an entry point to build a dependency graph (similar to [Browserify](https://github.com/substack/browserify-handbook#how-browserify-works)). Once the dependencies are known, binary modules are replaced by pre-compiled (for mips) binaries, assets are copied, and everything is tarred before sent to the awaiting Tessel.
 * `t2 run <file>` copy the file and its dependencies into Tessel's RAM & run immediately. Use this during development of your device application.
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
   * `[--slim]` true by default, copy only files needed by the program to run
   * `[--full]` the opposite of --slim, copy all the files in the project directory
-* `t2 push <file>` copy the file and its dependencies into Tessel's Flash memory & run immediately. Once deployed with `push` command, the device application will automatically run every time the Tessel restarts. 
+* `t2 push <file>` copy the file and its dependencies into Tessel's Flash memory & run immediately. Once deployed with `push` command, the device application will automatically run every time the Tessel restarts.
   * `[--lan]` deploy over LAN connection
   * `[--usb]` deploy over USB connection
   * `[--slim]` true by default, copy only files needed by the program to run
