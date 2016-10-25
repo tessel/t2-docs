@@ -8,7 +8,7 @@
   * [Supported Languages](API/Supported_Languages.md)
 - Debugging
   * [LAN Discovery](Debugging/LAN_Discovery.md)
-  * [Node Js](Debugging/NodeJs.md)
+  * [Node.js](Debugging/Node.js.md)
   * [Root Access](Debugging/Root_Access.md)
   * [Technical Overview](Debugging/Technical_Overview.md)
   * [USB](Debugging/USB.md)
