@@ -56,7 +56,7 @@ The pin capabilities for ports A and B are as follows:
 | B | 4 | ✓ |   |   |   |   | ✓ |   |   | ✓ |   |   |   |
 | B | 5 | ✓ |   |   |   |   |   | ✓ |   | ✓ |   | ✓ | ✓ |
 | B | 6 | ✓ |   |   |   |   |   |   | ✓ | ✓ |   | ✓ | ✓ |
-| B | 7 | ✓ |   |   |   |   |   |   |   | ✓ | ✓ | ✓ |   |
+| B | 7 | ✓ |   |   |   |   |   |   |   | ✓ | ✓ | ✓ |&nbsp;|
 
 
 
