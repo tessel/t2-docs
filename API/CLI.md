@@ -29,12 +29,15 @@ Connecting to a Tessel 2 over USB requires no special setup.
 In order to authorize the device with your computer to work over a LAN connection, call `t2 provision` after connecting it via USB. This will place an SSH key on the device. Use the `t2 wifi` command as described below to connect Tessel 2 to a local network. You should now be able to access your Tessel 2 remotely.
 
 ### SSH
-To connect to your Tessel 2 over SSH use the `t2 root` command.  
+To connect to your Tessel 2 over SSH use the `t2 root` command. Before you connect, call `t2 provision` to authorize your computer to access your Tessel via SSH.  
+
+Usage  
 *  `t2 root`
-  * `[--timeout]` Set timeout in seconds for scanning networked Tessels.
-  *  `[--key]` SSH key for authorization with your Tessel.
-  *  `[--output]`  Enable or disable writing command output to stdout/stderr. Useful for CLI API consumers.
-  *  `[--loglevel]`  Set the loglevel.  
+    * `[--timeout]` Set timeout in seconds for scanning networked Tessels. The default is `5` seconds.
+    *  `[--key]` SSH key for authorization with your Tessel.  Optional, only required if you have changed the keypath after your Tessel was provisioned.
+    *  `[--name]` The name of the Tessel where the command will be executed.
+    *  `[--output]`  Enable or disable writing command output to stdout/stderr. Useful for CLI API consumers.  Set to `true` by default
+    *  `[--loglevel]`  Set the loglevel.  It is set to `basic` by default.  Available options are `'trace', 'debug', 'basic', 'info', 'http', 'warn', 'error'`
 
 ### Virtual Machine
 Check out the [Virtual Machine repo](https://github.com/tessel/t2-vm) for instructions on how to set up the VM. All CLI commands except `provision` and `wifi` should be functional with the VM.
@@ -45,7 +48,7 @@ If `--name` is not specified, CLI will look for an environment variable, e.g. `e
 
 ### Starting Projects
 * `t2 init` in the current directory, create a package.json and index.js with Hello World code.
-* 
+
 ### Project Files
 Along with the package.json and index.js included in the `t2 init` process, there are some other files that may be useful for your project:
 * `.tesselignore` similar to .gitignore or [.npmignore](https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package), this file should list any files or directories you want ignored by the T2 bundling and deployment process. This is handy when using the `--full` flag, which tells T2 to bundle everything in the project directory.
