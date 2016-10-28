@@ -49,6 +49,7 @@ Along with the package.json and index.js included in the `t2 init` process, ther
 * `t2 list` will show what Tessels are available over WiFi and USB.
 * `t2 rename` will change the name of a Tessel.
 * `t2 reboot` will reboot your Tessel.  
+* `t2 key` will generate a local SSH keypair for authenticating to a Tessel.  Use with the `generate` argument.
 
 ### Code Deployment  
 During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files to let it know which files it should bundle up and push over to Tessel. In the default bundling process, CLI takes the file passed into the `run` or `push` command and uses it as an entry point to build a dependency graph (similar to [Browserify](https://github.com/substack/browserify-handbook#how-browserify-works)). Once the dependencies are known, binary modules are replaced by pre-compiled (for mips) binaries, assets are copied, and everything is tarred before sent to the awaiting Tessel.
