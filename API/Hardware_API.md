@@ -206,7 +206,7 @@ spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error, dataReceived
 });
 ```
 
-Wikipedia's article on SPI has an excellent [section](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Clock_polarity_and_phase) on polarity and clock phase.
+Wikipedia's article on SPI has an excellent [section](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Clock_polarity_and_phase) on polarity (cpol) and clock phase (cpha).
 
 ### UART/Serial
 
