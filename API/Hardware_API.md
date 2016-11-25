@@ -196,14 +196,17 @@ Here is an example using Tessel's SPI protocol:
 var port = tessel.port.A;
 var spi = new port.SPI({
   clockSpeed: 4*1000*1000, // 4MHz
-  cpol: 1, // polarity
-  cpha: 0, // clock phase
+  cpol: 0, // Polarity - optional
+  cpha: 0, // Clock phase - optional
+  chipSelect: port.pin[7] // Chip select - optional
 });
 
 spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error, dataReceived) {
   console.log('buffer returned by SPI slave:', dataReceived);
 });
 ```
+
+Wikipedia's article on SPI has an excellent [section](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Clock_polarity_and_phase) on polarity and clock phase.
 
 ### UART/Serial
 
