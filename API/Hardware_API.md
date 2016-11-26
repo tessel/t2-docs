@@ -166,16 +166,75 @@ number | Number | minimum value 0, maximum value 1, e.g. 0.6 | yes
 
 An I2C channel uses the SCL and SDA pins (0 and 1 on Tessel 2). If you are unfamiliar with the I2C protocol, please see the [communication protocols tutorial](https://tessel.io/docs/communicationProtocols#i2c).
 
-Here is an example using Tessel's I2C protocol:
+#### Usage
+
+There are three different commands you can send over I2C: transfer, send, and read.
+
+**i2c.transfer**
+
+Write data to the slave device and then subsequently read data from the slave device. Can be used to read from a specific register (depending on the communication details of the slave device– read the datasheet!).
 
 ```js
-var port = tessel.port.A;
-var slaveAddress = 0xDE;
-var i2c = new port.I2C(slaveAddress)
-var readLength = 4;
-i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), readLength, function (error, dataReceived) {
-  console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', dataReceived);
-})
+var tessel = require('tessel');
+
+// Connect to device
+var port = tessel.port.A; // Use the SCL/SDA pins of Port A
+var slaveAddress = 0xDE; // Specific to device
+var i2c = new port.I2C(slaveAddress); // Initialize I2C communication
+
+// Details of I2C transfer
+var bytesToSend = [0xde, 0xad, 0xbe, 0xef]; // An array,can be the address of a register or data to write (depends on device)
+var numBytesToRead = 4; // Read back this number of bytes
+
+// Send/recieve data over I2C using i2c.transfer
+i2c.transfer(new Buffer(bytesToSend), numBytesToRead, function (error, dataReceived) {
+  // Print data received (buffer of hex values)
+  console.log('Buffer returned by I2C slave device ('+slaveAddress.toString(16)+'):', dataReceived);
+});
+```
+
+**i2c.send**
+
+Write data over I2C to the slave device without reading data back.
+
+```js
+var tessel = require('tessel');
+
+// Connect to device
+var port = tessel.port.A; // Use the SCL/SDA pins of Port A
+var slaveAddress = 0xDE; // Specific to device
+var i2c = new port.I2C(slaveAddress); // Initialize I2C communication
+
+// Details of I2C transfer
+var bytesToSend = [0xde, 0xad, 0xbe, 0xef]; // An array,can be the address of a register or data to write (depends on device)
+
+// Send data over I2C using i2c.send
+i2c.send(new Buffer(bytesToSend), numBytesToRead, function (error) {
+  // Print confirmation
+  console.log('Wrote', bytesToSend, 'to slave device', slaveAddress.toString(16), 'over I2C.');
+});
+```
+
+**i2c.read**
+
+Read data over I2C but do not write to the slave device.
+
+```js
+var tessel = require('tessel');
+
+// Connect to device
+var port = tessel.port.A; // Use the SCL/SDA pins of Port A
+var slaveAddress = 0xDE; // Specific to device
+var i2c = new port.I2C(slaveAddress); // Initialize I2C communication
+
+// Details of I2C transfer
+var numBytesToRead = 4; // Read back this number of bytes
+
+// Read data over I2C using i2c.transfer
+i2c.read(numBytesToRead, function (error, dataReceived) {
+  // Print data received (buffer of hex values)
+  console.log('Buffer returned by I2C slave device ('+slaveAddress.toString(16)+'):', dataReceived);
+});
 ```
 
 ### Terms Used
