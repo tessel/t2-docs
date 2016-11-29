@@ -1,7 +1,7 @@
 # Supported languages
 
 ## JavaScript/Node.js
-Tessel 2 has full support for JavaScript and Node.js. The relevant repos can be found here:
+Tessel 2 has full support for JavaScript and Node.js (LTS versions). The relevant repos can be found here:
 
 * [Firmware support for JavaScript/Node](https://github.com/tessel/t2-firmware)
 * [CLI support for JavaScript/Node](https://github.com/tessel/t2-cli/blob/master/lib/tessel/deployment/javascript.js)
