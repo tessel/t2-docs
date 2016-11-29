@@ -174,6 +174,8 @@ There are three different commands you can send over I2C: transfer, send, and re
 
 Write data to the slave device and then subsequently read data from the slave device. Can be used to read from a specific register (depending on the communication details of the slave device– read the datasheet!).
 
+A common use of this method is to send the address of a register, then receive back the information contained in that register.
+
 ```js
 var tessel = require('tessel');
 
