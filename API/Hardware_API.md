@@ -211,7 +211,7 @@ var i2c = new port.I2C(slaveAddress); // Initialize I2C communication
 var bytesToSend = [0xde, 0xad, 0xbe, 0xef]; // An array,can be the address of a register or data to write (depends on device)
 
 // Send data over I2C using i2c.send
-i2c.send(new Buffer(bytesToSend), numBytesToRead, function (error) {
+i2c.send(new Buffer(bytesToSend), function (error) {
   // Print confirmation
   console.log('Wrote', bytesToSend, 'to slave device', slaveAddress.toString(16), 'over I2C.');
 });
