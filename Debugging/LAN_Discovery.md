@@ -29,7 +29,7 @@ sudo killall -HUP mDNSResponder
 This command basically clears the cache of mDNS devices so the next time you run the `dns-sd` utility or `t2 list`, Tessel will show up (if this was the root cause).
 
 ## An issue with network configuration
-There could also be an issue with the network you're computer is using where it blocks mDNS traffic. We've seen the latter case numerous times on company wifi networks. If it is a network configuration issue - you'll have solve that social engineering problem on your own.
+Attempts to connect to your Tessel 2 via a network that is configured to block mDNS traffic will always fail. This type of configuration is often used for secured company networks and open public networks to prevent unwanted peer-to-peer discovery and access. If this is your home network, change the configuration via the router's administration control panel. If this is a network that you do not control, you may have to request the change from an IT department (or similar resource).
 
 ## An issue with advertisement
 To determine if it's an issue with Tessel not advertising properly, you'll need to get [root access](/Root_Access.html) to your Tessel. Then run `ps` to check if the mDNS service is actually running on Tessel:
