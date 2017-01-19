@@ -292,15 +292,20 @@ uart.pipe(process.stdout);
 ```
 
 ### Power management
-Tessel 2's firmware turns off power to the port if a program does not require the `tessel` module. However, if `tessel` is required in the code, both will be turned on by default. It is possible to turn off the other module port with an explicit call:
 
-```js
-var tessel = require('tessel');
+#### Board
 
-tessel.close('A'); // A is now closed
+**tessel.reboot:**
+
+Power cycle the board. This will clear RAM and restart the program once reboot is complete.
+
+```
+tessel.reboot();
 ```
 
-In cases requiring more manual control, it is possible to specify the behaviors of both module ports as follows:
+#### Ports
+
+Tessel 2's firmware turns off power to the port if a program does not require the `tessel` module. However, if `tessel` is required in the code, both will be turned on by default. It is possible to control the power to module ports with an explicit call:
 
 ```js
 var Tessel = require('tessel-export');
@@ -311,10 +316,35 @@ var tessel = new Tessel({
    B: false,
  }
 });
-
-tessel.open('A'); // A is now open
-tessel.open('B'); // B is now open
 ```
+
+**tessel.open:**
+
+Open power to one or both Tessel ports.
+
+```js
+tessel.open(portName);
+```
+
+option   | type   | description       | required
+---------|--------|-------------------|---------
+portName | String | either 'A' or 'B' | no
+
+Leaving out the port name will turn on power to both ports.
+
+**tessel.close:**
+
+Close power to one or both Tessel ports.
+
+```js
+tessel.close(portName);
+```
+
+option   | type   | description       | required
+---------|--------|-------------------|---------
+portName | String | either 'A' or 'B' | no
+
+Leaving out the port name will turn off power to both ports.
 
 ## Button and LEDs
 There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object.
