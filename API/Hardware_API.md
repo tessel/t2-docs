@@ -66,18 +66,58 @@ By default, all of the pins are pulled high if not specifically set.
 
 ### Digital pins
 
-A digital pin (any pin other than 3.3V and GND on Tessel 2) is either high (on/3.3V) or low (off/0V). On both of ports A and B, pins 0 and 1 are pulled high to 3.3V by default.
+A digital pin (any pin other than 3.3V and GND on Tessel 2) is either high (on/3.3V) or low (off/0V). On both of ports A and B, all pins are pulled high to 3.3V by default.
 
-Here is an example usage of a digital pin on Tessel:
+**pin.write:**
+
+Set the digital value of a pin.
+
+```js
+pin.write(number, callback(error, buffer));
+```
+
+option    | type     | description                   | required
+----------|----------|-------------------------------|---------
+number    | Number   | 0 for "low", 1 for "high"     | yes
+callback  | Function | Called when write is complete | yes
+
+Example:
 
 ```js
 var tessel = require('tessel'); // import tessel
 var pin = tessel.port.A.pin[2]; // select pin 2 on port A
-pin.output(1);  // turn pin high (on)
-pin.read(function(error, value) {
-  // print the pin value to the console
-  console.log(value);
-  pin.output(0);  // turn pin low (off)
+pin.write(1, (error, buffer) => {
+  if (error) {
+    throw error;
+  }
+
+  console.log(buffer.toString()); // log the value
+});
+```
+
+**pin.read:**
+
+Read the digital value of a pin.
+
+```js
+pin.read(callback(error, number));
+```
+
+option    | type     | description                  | required
+----------|----------|------------------------------|---------
+callback  | Function | Called when read is complete | yes
+
+Example:
+
+```js
+var tessel = require('tessel'); // import tessel
+var pin = tessel.port.A.pin[2]; // select pin 2 on port A
+pin.read(function(error, number) {
+  if (error) {
+    throw error;
+  }
+
+  console.log(number); // 1 if "high", 0 if "low"
 });
 ```
 
