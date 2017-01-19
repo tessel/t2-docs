@@ -127,17 +127,51 @@ pin.read(function(error, number) {
 
 ### Analog pins
 
-An analog pin is a pin whose value can vary in the range between 0V and 3.3V. Pins 4 and 7 on port A and all pins on port B can read analog values (though pins 0 and 1 are pulled to 3.3V by default and are thus not recommended for this purpose). Pin 7 on port B can write an analog value.
+An analog pin is a pin whose value can vary in the range between 0V and 3.3V. 
 
-Here is an example usage of an analog pin on Tessel:
+**pin.analogWrite:**
+
+Set the analog value of a pin. Enabled on Port B, pin 7.
+
+```js
+pin.analogWrite(number);
+```
+
+option | type   | description                      | required
+-------|--------|----------------------------------|---------
+number | Number | minimum value 0, maximum value 1 | yes
+
+Example:
 
 ```js
 var tessel = require('tessel'); // import tessel
 var pin = tessel.port.B.pin[7]; // select pin 7 on port B
-pin.analogWrite(0.6);  // turn pin to 60% of high
-pin.analogRead(function(error, value) {
-  // print the pin value to the console
-  console.log(value);
+pin.analogWrite(0.6);  // turn pin to 60% of high voltage
+```
+
+**pin.analogRead:**
+
+Read the analog value of a pin. Enabled on Port A, pin 4 and 7, Port B, all pins. On both ports, all pins are pulled high be default.
+
+```js
+pin.analogRead(callback(error, number));
+```
+
+option   | type     | description                  | required
+---------|----------|------------------------------|---------
+callback | Function | Called when read is complete | yes
+
+Example:
+
+```js
+var tessel = require('tessel'); // import tessel
+var pin = tessel.port.A.pin[4]; // select pin 4 on port A
+pin.analogRead((error, number) => {
+  if (error) {
+    throw error;
+  }
+
+  console.log(number); // the number is a value between 0 and 1
 });
 ```
 
