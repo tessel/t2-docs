@@ -66,7 +66,7 @@ By default, all of the pins are pulled high if not specifically set.
 
 ### Digital pins
 
-A digital pin (any pin other than 3.3V and GND on Tessel 2) is either high (on/3.3V) or low (off/0V). On both of ports A and B, all pins are pulled high to 3.3V by default.
+A digital pin is either high (on/3.3V) or low (off/0V). Any pin on both ports A and B, other than 3.3V and GND, can be used be used as a digital pin. All pins are pulled high to 3.3V by default.
 
 **pin.write:**
 
@@ -76,22 +76,24 @@ Set the digital value of a pin.
 pin.write(number, callback(error, buffer));
 ```
 
-option    | type     | description                   | required
+Option    | Type     | Description                   | Required
 ----------|----------|-------------------------------|---------
 number    | Number   | 0 for "low", 1 for "high"     | yes
 callback  | Function | Called when write is complete | yes
 
+`buffer` is an instance of the [Buffer class](https://nodejs.org/docs/latest-v4.x/api/buffer.html).
+
 Example:
 
 ```js
-var tessel = require('tessel'); // import tessel
-var pin = tessel.port.A.pin[2]; // select pin 2 on port A
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
 pin.write(1, (error, buffer) => {
   if (error) {
     throw error;
   }
 
-  console.log(buffer.toString()); // log the value
+  console.log(buffer.toString()); // Log the value written to the pin
 });
 ```
 
@@ -103,15 +105,15 @@ Read the digital value of a pin.
 pin.read(callback(error, number));
 ```
 
-option    | type     | description                  | required
+Option    | Type     | Description                  | Required
 ----------|----------|------------------------------|---------
 callback  | Function | Called when read is complete | yes
 
 Example:
 
 ```js
-var tessel = require('tessel'); // import tessel
-var pin = tessel.port.A.pin[2]; // select pin 2 on port A
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
 pin.read(function(error, number) {
   if (error) {
     throw error;
