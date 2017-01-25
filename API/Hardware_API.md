@@ -127,51 +127,51 @@ pin.read(function(error, number) {
 
 ### Analog pins
 
-An analog pin is a pin whose value can vary in the range between 0V and 3.3V. 
+An analog pin is a pin whose value can vary in the range between 0V and 3.3V. The analog pin API represents these this value as a percentage, between 0 and 1, where 1 stands for 3.3V.
 
 **pin.analogWrite:**
 
-Set the analog value of a pin. Enabled on Port B, pin 7.
+Set the analog value of a pin. Enabled on pin 7 of Port B.
 
 ```js
 pin.analogWrite(number);
 ```
 
-option | type   | description                      | required
+Option | Type   | Description                      | Required
 -------|--------|----------------------------------|---------
 number | Number | minimum value 0, maximum value 1 | yes
 
 Example:
 
 ```js
-var tessel = require('tessel'); // import tessel
-var pin = tessel.port.B.pin[7]; // select pin 7 on port B
-pin.analogWrite(0.6);  // turn pin to 60% of high voltage
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.B.pin[7]; // Select pin 7 on port B
+pin.analogWrite(0.6);  // Turn pin to 60% of high voltage
 ```
 
 **pin.analogRead:**
 
-Read the analog value of a pin. Enabled on Port A, pin 4 and 7, Port B, all pins. On both ports, all pins are pulled high be default.
+Read the analog value of a pin. Enabled on pins 4 and 7 on Port A,and all pins on Port B. On both ports, all pins are pulled high by default, which means a pin not connected to any sort of sensor or resistor can still return a value over 0.
 
 ```js
 pin.analogRead(callback(error, number));
 ```
 
-option   | type     | description                  | required
+Option   | Type     | Description                  | Required
 ---------|----------|------------------------------|---------
 callback | Function | Called when read is complete | yes
 
 Example:
 
 ```js
-var tessel = require('tessel'); // import tessel
-var pin = tessel.port.A.pin[4]; // select pin 4 on port A
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.A.pin[4]; // Select pin 4 on port A
 pin.analogRead((error, number) => {
   if (error) {
     throw error;
   }
 
-  console.log(number); // the number is a value between 0 and 1
+  console.log(number); // The number is a value between 0 and 1
 });
 ```
 
