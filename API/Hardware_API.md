@@ -297,7 +297,7 @@ uart.pipe(process.stdout);
 
 **tessel.reboot:**
 
-Power cycle the board. This will clear RAM and restart the program once reboot is complete.
+Power cycle the board. This will clear RAM and restart the program once reboot is complete. This can be done with the [`t2 reboot`](/API/CLI.html#tessel-management) command as well.
 
 ```
 tessel.reboot();
@@ -320,7 +320,7 @@ var tessel = new Tessel({
 
 **tessel.open:**
 
-Open power to one or both Tessel ports.
+Allow power to one or both Tessel ports.
 
 ```js
 tessel.open(portName);
@@ -330,11 +330,11 @@ option   | type   | description       | required
 ---------|--------|-------------------|---------
 portName | String | either 'A' or 'B' | no
 
-Leaving out the port name will turn on power to both ports.
+Leaving out the port name will turn on power to both ports, i.e. `tessel.open()`.
 
 **tessel.close:**
 
-Close power to one or both Tessel ports.
+Disallow power to one or both Tessel ports.
 
 ```js
 tessel.close(portName);
@@ -344,7 +344,7 @@ option   | type   | description       | required
 ---------|--------|-------------------|---------
 portName | String | either 'A' or 'B' | no
 
-Leaving out the port name will turn off power to both ports.
+Leaving out the port name will turn off power to both ports, i.e. `tessel.close()`.
 
 ## Button and LEDs
 There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object.
