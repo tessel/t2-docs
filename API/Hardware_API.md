@@ -76,12 +76,12 @@ Set the digital value of a pin.
 pin.write(number, callback(error, buffer));
 ```
 
-Option    | Type     | Description                   | Required
-----------|----------|-------------------------------|---------
-number    | Number   | 0 for "low", 1 for "high"     | yes
-callback  | Function | Called when write is complete | yes
-
-`buffer` is an instance of the [Buffer class](https://nodejs.org/docs/latest-v4.x/api/buffer.html).
+Option    | Type     | Description                                                                                                     | Required
+----------|----------|-----------------------------------------------------------------------------------------------------------------|---------
+number    | Number                                                        | 0 for "low", 1 for "high"                                  | yes
+callback  | Function                                                      | Called when write is complete                              | yes
+error     | Error                                                         | Contains information if an error occured, otherwise `null` | yes
+buffer    | [Buffer](https://nodejs.org/docs/latest-v4.x/api/buffer.html) | Value written to the pin | yes
 
 Example:
 
@@ -105,9 +105,11 @@ Read the digital value of a pin.
 pin.read(callback(error, number));
 ```
 
-Option    | Type     | Description                  | Required
-----------|----------|------------------------------|---------
-callback  | Function | Called when read is complete | yes
+Option    | Type     | Description                                                | Required
+----------|----------|------------------------------------------------------------|---------
+callback  | Function | Called when read is complete                               | yes
+error     | Error    | Contains information if an error occured, otherwise `null` | yes
+number    | Number   | 1 if "high", 0 if "low"                                    | yes
 
 Example:
 
