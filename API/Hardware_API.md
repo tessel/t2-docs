@@ -157,9 +157,11 @@ Read the analog value of a pin. Enabled on pins 4 and 7 on Port A,and all pins o
 pin.analogRead(callback(error, number));
 ```
 
-Option   | Type     | Description                  | Required
----------|----------|------------------------------|---------
-callback | Function | Called when read is complete | yes
+Option   | Type     | Description                                                | Required
+---------|----------|------------------------------------------------------------|---------
+callback | Function | Called when read is complete                               | yes
+error    | Error    | Contains information if an error occured, otherwise `null` | yes
+number   | Number   | minimum value 0, maximum value 1                           | yes
 
 Example:
 
