@@ -139,7 +139,7 @@ pin.analogWrite(number);
 
 Option | Type   | Description                      | Required
 -------|--------|----------------------------------|---------
-number | Number | minimum value 0, maximum value 1 | yes
+number | Number | Minimum value 0, maximum value 1 | yes
 
 Example:
 
@@ -161,7 +161,7 @@ Option   | Type     | Description                                               
 ---------|----------|------------------------------------------------------------|---------
 callback | Function | Called when read is complete                               | yes
 error    | Error    | Contains information if an error occured, otherwise `null` | yes
-number   | Number   | minimum value 0, maximum value 1                           | yes
+number   | Number   | Minimum value 0, maximum value 1                           | yes
 
 Example:
 
