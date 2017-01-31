@@ -78,10 +78,10 @@ pin.write(number, callback(error, buffer));
 
 Option    | Type     | Description                                                                                                     | Required
 ----------|----------|-----------------------------------------------------------------------------------------------------------------|---------
-number    | Number                                                        | 0 for "low", 1 for "high"                                  | yes
-callback  | Function                                                      | Called when write is complete                              | yes
-error     | Error                                                         | Contains information if an error occured, otherwise `null` | yes
-buffer    | [Buffer](https://nodejs.org/docs/latest-v4.x/api/buffer.html) | Value written to the pin | yes
+number    | Number                                                        | 0 for "low", 1 for "high"                                  | Yes
+callback  | Function                                                      | Called when write is complete                              | Yes
+error     | Error                                                         | Contains information if an error occured, otherwise `null` | Yes
+buffer    | [Buffer](https://nodejs.org/docs/latest-v4.x/api/buffer.html) | Value written to the pin                                   | Yes
 
 Example:
 
@@ -107,9 +107,9 @@ pin.read(callback(error, number));
 
 Option    | Type     | Description                                                | Required
 ----------|----------|------------------------------------------------------------|---------
-callback  | Function | Called when read is complete                               | yes
-error     | Error    | Contains information if an error occured, otherwise `null` | yes
-number    | Number   | 1 if "high", 0 if "low"                                    | yes
+callback  | Function | Called when read is complete                               | Yes
+error     | Error    | Contains information if an error occured, otherwise `null` | Yes
+number    | Number   | 1 if "high", 0 if "low"                                    | Yes
 
 Example:
 
@@ -139,7 +139,7 @@ pin.analogWrite(number);
 
 Option | Type   | Description                      | Required
 -------|--------|----------------------------------|---------
-number | Number | Minimum value 0, maximum value 1 | yes
+number | Number | Minimum value 0, maximum value 1 | Yes
 
 Example:
 
@@ -159,9 +159,9 @@ pin.analogRead(callback(error, number));
 
 Option   | Type     | Description                                                | Required
 ---------|----------|------------------------------------------------------------|---------
-callback | Function | Called when read is complete                               | yes
-error    | Error    | Contains information if an error occured, otherwise `null` | yes
-number   | Number   | Minimum value 0, maximum value 1                           | yes
+callback | Function | Called when read is complete                               | Yes
+error    | Error    | Contains information if an error occured, otherwise `null` | Yes
+number   | Number   | Minimum value 0, maximum value 1                           | Yes
 
 Example:
 
@@ -195,13 +195,13 @@ pin.once(eventName, callback);
 
 #### Available Events
 
-eventName | description           | notes
+Event Name | Description           | Notes
 ----------|-----------------------|------
-rise      | pin voltage rises     |
-fall      | pin voltage falls     |
-change    | pin voltage changes   | Passes current value of pin to callback
-high\*    | pin voltage goes high | Only available via pin.once()
-low\*     | pin voltage goes low  | Only available via pin.once()
+rise      | Pin voltage rises     |
+fall      | Pin voltage falls     |
+change    | Pin voltage changes   | Passes current value of pin to callback
+high\*    | Pin voltage goes high | Only available via pin.once()
+low\*     | Pin voltage goes low  | Only available via pin.once()
 
 \* Only one of these events may be registered at a time.
 
@@ -221,9 +221,9 @@ Set the signal frequency in hertz. 1 hertz equals 1 cycle of signal per second.
 tessel.pwmFrequency(number);
 ```
 
-option | type   | description                         | required
+Option | Type   | Description                         | Required
 -------|--------|-------------------------------------|---------
-number | Number | minimum value 1, maximum value 5000 | yes
+number | Number | Minimum value 1, maximum value 5000 | Yes
 
 Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-setting
 `pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again.
@@ -236,9 +236,9 @@ Set the percentage amount of time the pin is active each cycle of signal.
 pin.pwmDutyCycle(number);
 ```
 
-option | type   | description                                | required
+Option | Type   | Description                                | Required
 -------|--------|--------------------------------------------|---------
-number | Number | minimum value 0, maximum value 1, e.g. 0.6 | yes
+number | Number | Minimum value 0, maximum value 1, e.g. 0.6 | Yes
 
 [Learn more about using the PWM API.](/Tutorials/Pulse_Width_Modulation.html)
 
@@ -406,9 +406,9 @@ Allow power to one or both Tessel ports.
 tessel.open(portName);
 ```
 
-option   | type   | description       | required
+Option   | Type   | Description       | Required
 ---------|--------|-------------------|---------
-portName | String | either 'A' or 'B' | no
+portName | String | Either 'A' or 'B' | No
 
 Leaving out the port name will turn on power to both ports, i.e. `tessel.open()`.
 
@@ -420,9 +420,9 @@ Disallow power to one or both Tessel ports.
 tessel.close(portName);
 ```
 
-option   | type   | description       | required
+Option   | Type   | Description       | Required
 ---------|--------|-------------------|---------
-portName | String | either 'A' or 'B' | no
+portName | String | Either 'A' or 'B' | No
 
 Leaving out the port name will turn off power to both ports, i.e. `tessel.close()`.
 
