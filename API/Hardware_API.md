@@ -66,18 +66,62 @@ By default, all of the pins are pulled high if not specifically set.
 
 ### Digital pins
 
-A digital pin (any pin other than 3.3V and GND on Tessel 2) is either high (on/3.3V) or low (off/0V). On both of ports A and B, pins 0 and 1 are pulled high to 3.3V by default.
+A digital pin is either high (on/3.3V) or low (off/0V). Any pin on both ports A and B, other than 3.3V and GND, can be used be used as a digital pin. All pins are pulled high to 3.3V by default.
 
-Here is an example usage of a digital pin on Tessel:
+**pin.write:**
+
+Set the digital value of a pin.
 
 ```js
-var tessel = require('tessel'); // import tessel
-var pin = tessel.port.A.pin[2]; // select pin 2 on port A
-pin.output(1);  // turn pin high (on)
-pin.read(function(error, value) {
-  // print the pin value to the console
-  console.log(value);
-  pin.output(0);  // turn pin low (off)
+pin.write(number, callback(error, buffer));
+```
+
+Option    | Type     | Description                                                                                                     | Required
+----------|----------|-----------------------------------------------------------------------------------------------------------------|---------
+number    | Number                                                        | 0 for "low", 1 for "high"                                  | yes
+callback  | Function                                                      | Called when write is complete                              | yes
+error     | Error                                                         | Contains information if an error occured, otherwise `null` | yes
+buffer    | [Buffer](https://nodejs.org/docs/latest-v4.x/api/buffer.html) | Value written to the pin | yes
+
+Example:
+
+```js
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
+pin.write(1, (error, buffer) => {
+  if (error) {
+    throw error;
+  }
+
+  console.log(buffer.toString()); // Log the value written to the pin
+});
+```
+
+**pin.read:**
+
+Read the digital value of a pin.
+
+```js
+pin.read(callback(error, number));
+```
+
+Option    | Type     | Description                                                | Required
+----------|----------|------------------------------------------------------------|---------
+callback  | Function | Called when read is complete                               | yes
+error     | Error    | Contains information if an error occured, otherwise `null` | yes
+number    | Number   | 1 if "high", 0 if "low"                                    | yes
+
+Example:
+
+```js
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
+pin.read(function(error, number) {
+  if (error) {
+    throw error;
+  }
+
+  console.log(number); // 1 if "high", 0 if "low"
 });
 ```
 
