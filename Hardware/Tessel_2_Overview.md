@@ -26,11 +26,11 @@ Above-and-beyond features:
 
 On the board, Tessel 2 is divided into three functional blocks:
 
-![](http://67.media.tumblr.com/83018b7f2595c1f4b3877f74eb86d134/tumblr_inline_nkz56hKzbm1s75tgz.png)
+![](http://i.imgur.com/5RturZe.png)
 
 These can be abstracted as follows:
 
-![](http://65.media.tumblr.com/559c4d45074644a5c335987bec7c698e/tumblr_inline_nkz56bL5SC1s75tgz.png)
+![](http://i.imgur.com/LU9UNf1.png)
 
 ### Abstraction boundaries of Tessel 2
 
