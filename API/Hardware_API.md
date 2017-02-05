@@ -7,8 +7,9 @@
   * [Analog pins](#analog-pins)
   * [Interrupts](#interrupt-pins)
   * [PWM pins](#pwm-pins)
-  * [SPI](#spi)
+  * [Terms used](#terms-used)
   * [I2C](#i2c)
+  * [SPI](#spi)
   * [UART/Serial](#uart-serial)
   * [Power management](#power-management)
 * [Button and LEDs](#button-and-leds)
@@ -242,6 +243,14 @@ number | Number | minimum value 0, maximum value 1, e.g. 0.6 | yes
 
 [Learn more about using the PWM API.](/Tutorials/Pulse_Width_Modulation.html)
 
+### Terms Used
+
+The following sections use industry standard technical terms that are considered non-inclusive. They are used here in an explicitly technical manner and only to be accurate in describing these wire communication protocols. The terms are used strictly as defined here:
+
+**Master:** A machine or device directly controlling another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/master#master__7))
+
+**Slave:** A device, or part of one, directly controlled by another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/slave#slave__7))
+
 ### I2C
 
 An I2C channel uses the SCL and SDA pins (0 and 1 on Tessel 2). If you are unfamiliar with the I2C protocol, please see the [communication protocols tutorial](https://tessel.io/docs/communicationProtocols#i2c).
@@ -318,14 +327,6 @@ i2c.read(numBytesToRead, function (error, dataReceived) {
   console.log('Buffer returned by I2C slave device ('+slaveAddress.toString(16)+'):', dataReceived);
 });
 ```
-
-### Terms Used
-
-The following sections use industry standard technical terms that are considered non-inclusive. They are used here in an explicitly technical manner and only to be accurate in describing these wire communication protocols. The terms are used strictly as defined here:
-
-**Master:** A machine or device directly controlling another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/master#master__7))
-
-**Slave:** A device, or part of one, directly controlled by another (source: [Oxford Dictionary](http://www.oxforddictionaries.com/us/definition/american_english/slave#slave__7))
 
 ### SPI
 
