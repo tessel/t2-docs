@@ -498,7 +498,11 @@ led.toggle(function (error) {
 
 ## Button
 
-Tessel 2's button is not programmable. It's a reset button; pressing it will cycle power on your Tessel 2. You can also reboot with the command line and in JavaScript: see the [Power Management](#power-management) section.
+Tessel 2's button is not programmable.
+
+During operation of a script, pressing the button will restart the script.
+
+If you hold down the button while plugging in power, Tessel 2 boots into DFU mode. This is typically used to load firmware built from source.
 
 ## USB Ports
 
