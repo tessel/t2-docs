@@ -12,7 +12,8 @@
   * [SPI](#spi)
   * [UART/Serial](#uart-serial)
   * [Power management](#power-management)
-* [Button and LEDs](#button-and-leds)
+* [LEDs](#leds)
+* [Button](#button)
 * [USB ports](#usb-ports)
 
 When you `require('tessel')` within a script which is executed on Tessel 2, this loads a library which interfaces with the Tessel 2 hardware, including pins, ports, and LEDs, just like Tessel 1 ([Tessel 1 hardware documentation](https://github.com/tessel/t1-docs/blob/master/hardware-api.md)). The code for Tessel 2's hardware object can be found [here](https://github.com/tessel/t2-firmware/blob/master/node/tessel-export.js).
@@ -427,7 +428,7 @@ portName | String | Either 'A' or 'B' | No
 
 Leaving out the port name will turn off power to both ports, i.e. `tessel.close()`.
 
-## Button and LEDs
+## LEDs
 There are 4 LEDs available on the Tessel 2, you may see them labeled on the board as `ERR`, `WLAN`, `LED0`, and `LED1`. They are available through the `tessel.led` object.
 
 ```js
@@ -496,7 +497,13 @@ led.toggle(function (error) {
 });
 ```
 
-Tessel 2's button is not yet exposed in the API – but you can change that! See [#15](https://github.com/tessel/t2-firmware/issues/107) for a description of what needs to be done.
+## Button
+
+Tessel 2's button is not programmable.
+
+During operation of a script, pressing the button will restart the script.
+
+If you hold down the button while plugging in power, Tessel 2 boots into DFU mode. This is typically used to load firmware built from source.
 
 ## USB Ports
 

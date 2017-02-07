@@ -16,6 +16,9 @@ Defined ways of communicating, e.g. a map between timed toggling of digital sign
 ## datasheet
 A document of information about an electrical part or component. Typically, the manufacturer of an integrated circuit (IC) will provide a corresponding datasheet. Datasheets are usually available as PDF documents online, and can be found by searching for the part's number in a search engine.
 
+## DFU
+device firmware upgrade, a mode of operation which allows for reprogramming of device firmware
+
 ## digital
 In an electrical signal, existing at discrete/binary values: on or off, zero or one. This can be used simply, e.g. on/off states of a switch or light, or you can toggle digital signals very quickly to encode complex messaging with <a href="/Tutorials/Communication_Protocols.html">communication protocols</a>. <a href="https://learn.sparkfun.com/tutorials/analog-vs-digital">Sparkfun has a good writeup on analog versus digital</a> if you want to learn more.
 
