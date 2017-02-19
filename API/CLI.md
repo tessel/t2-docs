@@ -35,7 +35,6 @@ Usage
 *  `t2 root`
     * `[--timeout]` Set timeout in seconds for scanning networked Tessels. The default is `5` seconds.
     *  `[--key]` SSH key for authorization with your Tessel.  Optional, only required if you have changed the keypath after your Tessel was provisioned.
-      * `[--generate]` generates a new SSH keypair for authenticating to a Tessel.
     *  `[--name]` The name of the Tessel where the command will be executed.
     *  `[--output]`  Enable or disable writing command output to stdout/stderr. Useful for CLI API consumers.  Set to `true` by default
     *  `[--loglevel]`  Set the loglevel.  It is set to `basic` by default.  Available options are `'trace', 'debug', 'basic', 'info', 'http', 'warn', 'error'`
