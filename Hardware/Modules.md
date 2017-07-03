@@ -144,7 +144,7 @@ Communication protocol | UART, GPIO
 *  Receiving IR takes very little power. Transmission, on the other hand, uses a good deal of power.
 *  Receiver frequency is fixed at 38 kHz, although pin-compatible parts which operate at other frequencies presumably exist. Check your appliance's manual and/or the internet to make sure your hardware is compatible.
 
-# Links to Hardware Information:
+### Links to Hardware Information:
 
 *  [Code: firmware, docs, examples](https://github.com/tessel/ir-attx4)
 *  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/IR/TM-11-03.pdf)
@@ -174,7 +174,7 @@ Communication protocol | GPIO
 *  Rated to 240 V, 5 A (but please be careful)
 *  Insert and remove wires by pressing down on the connectors with a ballpoint pen (or similar).
 
-# Links to Hardware Information:
+### Links to Hardware Information:
 
 *  [Code: firmware, docs, examples](https://github.com/tessel/relay-mono)
 *  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Relay/TM-04-04.pdf)
@@ -205,7 +205,7 @@ Communication protocol | I2C, GPIO
 *  Hardware-compatible with [ISO-14443 RFID tags](http://nfc-tools.org/index.php?title=ISO14443A), including but not limited to: MiFare (Classic 1k, Classic 4k, Ultralight), DesFire, and FeliCa. Further information in the link.
 *  Compatible cards (consumer): Charlie, Clipper
 
-# Links to Hardware Information:
+### Links to Hardware Information:
 
 *  [Code: firmware, docs, examples](https://github.com/tessel/rfid-pn532)
 *  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/RFID/TM-10-03.pdf)
@@ -236,7 +236,7 @@ Communication protocol | I2C, GPIO
 *  5.5 mm barrel jack (center positive) for powering servos
 *  Can be used to control anything that needs PWM (speed controllers, gate drivers-to-FETs-big LEDs, etc.)
 
-# Links to Hardware Information:
+### Links to Hardware Information:
 
 *  [Code: firmware, docs, examples](https://github.com/tessel/servo-pca9685)
 *  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.pdf)
