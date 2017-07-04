@@ -8,6 +8,7 @@ This document provides hardware overviews for each Tessel module:
 *  [Ambient](#ambient)
 *  [Climate](#climate)
 *  [GPS](#gps)
+*  [Infrared](#infrared)
 *  [Relay](#relay)
 *  [RFID](#rfid)
 *  [Servo](#servo)
@@ -31,6 +32,14 @@ Communication protocol          | I2C, GPIO
 *  I2C address can be modified by shorting J3 – see [MMA8452Q datasheet](http://www.nxp.com/files/sensors/doc/data_sheet/MMA8451Q.pdf) 5.11.1 Table 10.
 *  +x = towards the Tessel, +y = G3 --> GND, +z = up
 
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/accel-mma84)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Accelerometer/TM-01-02.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Accelerometer/TM-01-02.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Accelerometer/TM-01-02.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Accelerometer/TM-01-02.dipb2)
+
 ## Ambient
 
 Measures ambient light and sound. Sound gain adjustable via R6.
@@ -51,6 +60,14 @@ Communication protocol | SPI, GPIO
 *  Light signal path includes low pass filters with *f<sub>c</sub>* = 1.6 Hz
 *  Sound signal path measures loudness via a half wave rectifier
 
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/ambient-attx4)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Ambient/TM-08-03.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Ambient/TM-08-03.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Ambient/TM-08-03.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Ambient/TM-08-03.dipb2)
+
 ## Climate
 
 Measure temperature and humidity
@@ -69,6 +86,14 @@ Communication protocol | I2C, GPIO
 ### Notes
 
 Temperature of the climate module can be affected by proximity to the Tessel processor.
+
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/climate-si7005)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Climate/TM-02-02.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Climate/TM-02-02.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Climate/TM-02-02.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Climate/TM-02-02.dipb1)
 
 ## GPS
 
@@ -91,6 +116,14 @@ Communication protocol | UART, GPIO
 *  The A2235-H supports two different data modes: NMEA and SiRF binary mode (also called OSP mode). Tessel GPS's default APIs use the module in NMEA mode.
 *  A-GPS is supported with client generated extended ephemeris up to 3 days.
 
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/gps-a2235h)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/GPS/TM-09-02.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/GPS/TM-09-02.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/GPS/TM-09-02.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/GPS/TM-09-02.dipb0)
+
 ## Infrared
 
 Communicate with and command household electronics using IR light
@@ -110,6 +143,14 @@ Communication protocol | UART, GPIO
 
 *  Receiving IR takes very little power. Transmission, on the other hand, uses a good deal of power.
 *  Receiver frequency is fixed at 38 kHz, although pin-compatible parts which operate at other frequencies presumably exist. Check your appliance's manual and/or the internet to make sure your hardware is compatible.
+
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/ir-attx4)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/IR/TM-11-03.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/IR/TM-11-03.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/IR/TM-11-03.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/IR/TM-11-03.dipb2)
 
 ## Relay
 
@@ -132,6 +173,14 @@ Communication protocol | GPIO
 *  Current draw increases when the relays close (*I<sub>draw</sub>* = 10mA + 40mA * [number of relays on])
 *  Rated to 240 V, 5 A (but please be careful)
 *  Insert and remove wires by pressing down on the connectors with a ballpoint pen (or similar).
+
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/relay-mono)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Relay/TM-04-04.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Relay/TM-04-04.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Relay/TM-04-04.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Relay/TM-04-04.dipb2)
 
 ## RFID
 
@@ -156,6 +205,13 @@ Communication protocol | I2C, GPIO
 *  Hardware-compatible with [ISO-14443 RFID tags](http://nfc-tools.org/index.php?title=ISO14443A), including but not limited to: MiFare (Classic 1k, Classic 4k, Ultralight), DesFire, and FeliCa. Further information in the link.
 *  Compatible cards (consumer): Charlie, Clipper
 
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/rfid-pn532)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/RFID/TM-10-03.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/RFID/TM-10-03.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/RFID/TM-10-03.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/RFID/TM-10-03.dipb0)
 
 ## Servo
 
@@ -179,3 +235,11 @@ Communication protocol | I2C, GPIO
 *  Tessel is a 3.3V device, so *V<sub>out</sub>* on the PWM channels is 3.3 V (works for standard hobby servos)
 *  5.5 mm barrel jack (center positive) for powering servos
 *  Can be used to control anything that needs PWM (speed controllers, gate drivers-to-FETs-big LEDs, etc.)
+
+### Links to Hardware Information:
+
+*  [Code: firmware, docs, examples](https://github.com/tessel/servo-pca9685)
+*  [Schematic(PDF)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.pdf)
+*  [Schematic (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.dch)
+*  [Layout (DipTrace)](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.dip)
+*  [Layout support file for silkscreen](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.dipb0)
