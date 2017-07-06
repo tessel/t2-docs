@@ -43,7 +43,7 @@ By far the simplest form of communication is via General Purpose Input/Output (G
 
 By default, Tessel's GPIO pins are configured to be inputs.
 
-[See which pins support this protocol.](https://github.com/tessel/t2-docs/blob/master/hardware-api.md#pin-mapping)
+[See which pins support this protocol.](https://tessel.gitbooks.io/t2-docs/content/API/Hardware_API.html#pin-mapping)
 
 #### Input
 When acting as a digital input, a pin can be queried in software and will return a value indicating the current state of the pin: high (1 or true) or low (0 or false).
