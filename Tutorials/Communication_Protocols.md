@@ -157,9 +157,9 @@ The numbers in green on the diagram above delineate each bit in the byte being t
 It sounds complicated, but remember that the Tessel takes care of all of this pin manipulation for you. All you have to do is write some Javascript like this code snippet, which demonstrates the use of the SPI protocol on port A.
 
 ```js
+'use strict';
 const tessel = require('tessel');
-// Unpack port A from tessel.port and name it "port"
-const { A: port } = tessel.port;
+const port = tessel.port.A;
 const spi = new port.SPI({
   clockSpeed: 4000000 // 4MHz
 });
@@ -217,9 +217,9 @@ Finally, the master will issue a stop condition on the bus by pulling SCL high, 
 It's a little complicated, but the Tessel takes care of all the details for you. Using the I2C pins on port A looks like this:
 
 ```js
+'use strict';
 const tessel = require('tessel');
-// Unpack port A from tessel.port and name it "port"
-const { A: port } = tessel.port;
+const port = tessel.port.A;
 // This is the address of the attached module/sensor
 const address = 0xDE; 
 const i2c = new port.I2C(address);
@@ -264,9 +264,9 @@ For this protocol to work, the sender and receiver have to agree on a few things
 When you want to interact with a specific module via UART, the answers to these questions are found in the module's datasheet. Using that information you can configure the UART in Javascript like this:
 
 ```js
+'use strict';
 const tessel = require('tessel');
-// Unpack port A from tessel.port and name it "port"
-const { A: port } = tessel.port;
+const port = tessel.port.A;
 const uart = new port.UART({
   dataBits: 8,
   baudrate: 115200,
