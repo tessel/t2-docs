@@ -8,6 +8,8 @@ In the following example, the Tessel will change the color of an RGB LED by chan
 
 ![PWM RGB LED Circuit](https://s3.amazonaws.com/technicalmachine-assets/tutorials/hardware-api/pwm-rgb-circuit.png)
 
+
+
 ```js
 const tessel = require('tessel');
 
@@ -52,3 +54,21 @@ Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-set
 `pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. 
 
 [More information on pulse-width modulation.](https://learn.sparkfun.com/tutorials/pulse-width-modulation)
+
+--------------------------------------------------------------
+
+If you're Tessel 2 is up-to-date, it will be be running Node.js 6.10.3 or newer. You can check that by running `t2 version` and comparing the output to the following: 
+
+```
+$ t2 version
+INFO Looking for your Tessel...
+INFO Connected to maria.
+INFO Tessel Environment Versions:
+INFO t2-cli: 0.1.5
+INFO t2-firmware: 0.1.0
+INFO Node.js: 6.10.3
+```
+
+If your output doesn't match, you should run `t2 update` to get the latest OS and firmware. Once that's done, you're ready to run the program in this tutorial.
+
+
