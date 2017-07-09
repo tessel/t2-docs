@@ -51,9 +51,9 @@ When acting as a digital input, a pin can be queried in software and will return
 The following code snippet is an example of querying pin 2 on port A.
 
 ```js
-var tessel = require('tessel'); // Import tessel
-var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
-pin.read(function(error, value) {
+const tessel = require('tessel'); // Import tessel
+const pin = tessel.port.A.pin[2]; // Select pin 2 on port A
+pin.read((error, value) => {
   // Print the pin value to the console
   console.log(value);
 });
@@ -84,10 +84,10 @@ High means the main Tessel board will set that pin to be 3.3V and low means it w
 Digital output is useful for connected hardware that understands simple on/off states. The following code snippet shows how you can set the state of the pin 2 on port A.
 
 ```js
-var tessel = require('tessel'); // Import tessel
-var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
+const tessel = require('tessel'); 
+const pin = tessel.port.A.pin[2]; // Select pin 2 on port A
 pin.output(1);  // Turn pin high (on)
-pin.read(function(error, value) {
+pin.read((error, value) => {
   // Print the pin value to the console
   console.log(value);
   pin.output(0);  // Turn pin low (off)
@@ -157,13 +157,15 @@ The numbers in green on the diagram above delineate each bit in the byte being t
 It sounds complicated, but remember that the Tessel takes care of all of this pin manipulation for you. All you have to do is write some Javascript like this code snippet, which demonstrates the use of the SPI protocol on port A.
 
 ```js
-var portA = tessel.port['A'];
-var spi = new portA.SPI({
+'use strict';
+const tessel = require('tessel');
+const port = tessel.port.A;
+const spi = new port.SPI({
   clockSpeed: 4000000 // 4MHz
 });
 
-spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error, dataReceived) {
-  console.log('buffer returned by SPI slave:', dataReceived);
+spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), (error, buffer) => {
+  console.log(`buffer returned by SPI slave: <${[...buffer]}>`);
 });
 ```
 
@@ -215,12 +217,14 @@ Finally, the master will issue a stop condition on the bus by pulling SCL high, 
 It's a little complicated, but the Tessel takes care of all the details for you. Using the I2C pins on port A looks like this:
 
 ```js
-var tessel = require('tessel'); // import tessel
-var portA = tessel.port['A']; // use Port A
-var slaveAddress = 0xDE; // This is the address of the attached module/sensor
-var i2c = new portA.I2C(slaveAddress)
+'use strict';
+const tessel = require('tessel');
+const port = tessel.port.A;
+// This is the address of the attached module/sensor
+const address = 0xDE; 
+const i2c = new port.I2C(address);
 
-i2c.send(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (error) {
+i2c.send(new Buffer([0xde, 0xad, 0xbe, 0xef]), (error) => {
   console.log("I'm done sending the data");
   // Can also use err for error handling
 })
@@ -260,8 +264,10 @@ For this protocol to work, the sender and receiver have to agree on a few things
 When you want to interact with a specific module via UART, the answers to these questions are found in the module's datasheet. Using that information you can configure the UART in Javascript like this:
 
 ```js
-var port = tessel.port['A'];
-var uart = new port.UART({
+'use strict';
+const tessel = require('tessel');
+const port = tessel.port.A;
+const uart = new port.UART({
   dataBits: 8,
   baudrate: 115200,
   parity: "none",
