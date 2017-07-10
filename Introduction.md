@@ -9,7 +9,7 @@ If you are looking for information on how to use Tessel or one of the Tessel mod
 
 Looking to learn more about hardware and how to create it? Check out the information in the Tutorials section.
 
-If you are here to debug an issue or get up to speed on the open source project, the Debugging section should help you, particularly the [Technical Overview](/debugging/Technical_Overview.html).
+If you are here to debug an issue or get up to speed on the open source project, the Debugging section should help you, particularly the [Technical Overview](https://tessel.gitbooks.io/t2-docs/content/Debugging/Technical_Overview.html).
 
 **Looking for information you can't find?** Please report incorrect or missing information as an issue on the [Tessel 2 docs repo](https://github.com/tessel/t2-docs).
 
