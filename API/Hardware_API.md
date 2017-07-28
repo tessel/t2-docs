@@ -61,7 +61,7 @@ The pin capabilities for ports A and B are as follows:
 | B | 7 | ✓ |   |   |   |   |   |   |   | ✓ | ✓ | ✓ |&nbsp;|
 
 
-![Pin Mapping for Tessel](https://github.com/276linesofCode/t2-docs/blob/master/tessel%20(2).jpg)
+![Pin Mapping for Tessel](https://github.com/276linesofCode/t2-docs/blob/master/pindiagram.jpg)
 
 
 If you're newer to hardware and these functions look like alphabet soup to you, take a look at our [communication protocols documentation](https://tessel.io/docs/communicationProtocols) to get an idea of how these pins should be used.
