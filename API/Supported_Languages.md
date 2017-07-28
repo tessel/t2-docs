@@ -10,7 +10,7 @@ Tessel 2 has full support for JavaScript and Node.js (LTS versions). The relevan
 
 There is support for binary modules on Tessel 2 that are precompiled. The best way to find out whether the module you want is available is to try deploying it. The module has been precompiled, it will just work!
 
-For modules that have not been precompiled (you can see the list at [packages.tessel.io](packages.tessel.io)), you will see an error message explaining why it cannot be loaded:
+For modules that have not been precompiled (you can see the list at [packages.tessel.io](https://packages.tessel.io)), you will see an error message explaining why it cannot be loaded:
 
 ```
 Pre-compiled module is missing: {name of module}.
