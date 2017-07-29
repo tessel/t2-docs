@@ -8,7 +8,7 @@ This is a Gitbook-formatted guide. You may read the processed document at [https
 
 ### Editing online
 
-Gitbooks are editable online! Visit the \[gitbook repository for the Tessel 2 docs\]\(https://www.gitbook.com/book/tessel/t2-docs/activity\) to suggest changes through a graphical editing format.
+Gitbooks are editable online! Visit the [gitbook repository for the Tessel 2 docs](https://www.gitbook.com/book/tessel/t2-docs/activity) to suggest changes through a graphical editing format.
 
 ### Requirements
 
