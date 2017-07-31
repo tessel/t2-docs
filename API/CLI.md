@@ -15,6 +15,20 @@ The best place to go next is [the Tessel 2 start experience](http://tessel.io/t2
 ## Updating Tessel 2 On-board OS/Firmware
 
 ### How do I know if I need to update my T2?
+T2 - CLI and T2 - Firmware are separately versioned.
+
+* For updating T2 - CLI:
+
+  If the computer running the T2 CLI is connected to the internet, the CLI checks whether it is up to date or not. If it is not, the CLI will provide the update instructions using a notifier to the user (as shown below). It is to be updated with a global npm re-install of the CLI.
+
+  _The CLI only checks once in a day ensuring that the CLI functioning does not slow down._
+
+  <img src="/images/CLI_Update.png" width="400">
+
+* For updating T2 - Firmware:
+
+  The user does not get update information for T2 - Firmware from the CLI. The most convenient and fastest way to find is by running the `t2 update` command.
+
 The easiest way is to run `t2 update` and it will update automatically if there is a newer firmware version available. Otherwise, you can run `t2 version` to get the version running on your Tessel, and then `t2 update -l` to see the 10 newest versions available.
 
 ### Updating
