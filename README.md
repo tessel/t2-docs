@@ -1,6 +1,6 @@
 # Tessel 2 Docs
 
-![Code of Conduct](https://img.shields.io/badge/❤-code of conduct-blue.svg?style=flat)](https://github.com/tessel/project/blob/master/CONDUCT.md)
+![Code of Conduct](https://img.shields.io/badge/❤-code of conduct-blue.svg?style=flat)(https://github.com/tessel/project/blob/master/CONDUCT.md)
 
 This is a Gitbook-formatted guide. You may read the processed document at [https://www.gitbook.com/book/tessel/t2-docs/details](https://www.gitbook.com/book/tessel/t2-docs/details). PRs to this repository are automatically published online.
 
