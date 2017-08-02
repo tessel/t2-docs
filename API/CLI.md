@@ -19,17 +19,15 @@ t2-cli and t2-firmware are separately versioned.
 
 * For updating t2-cli:
 
-  If the computer running the t2-cli is connected to the internet, the CLI checks whether it is up to date or not. If it is not, the CLI will provide the update instructions using a notifier to the user (as shown below). It is to be updated with a global npm re-install of the CLI.
+  When a CLI command is run on an internet-connected computer, the CLI automatically checks for updates to the `t2-cli` module. If an update is available, the CLI will provide the update instructions using a notifier to the user (as shown below). The CLI can be updated with a global npm re-install of the CLI using the command `npm install -g t2-cli`.
 
-  _The CLI only checks once in a day ensuring that the CLI functioning does not slow down._
+  _The CLI only checks once per day to ensure that the CLI functioning does not slow down._
 
   <img src="/images/CLI_Update.png" width="400">
 
 * For updating t2-firmware:
 
-  The user does not get update information for t2-firmware from the CLI. The most convenient and fastest way to find is by running the `t2 update` command.
-
-The easiest way is to run `t2 update` and it will update automatically if there is a newer firmware version available. Otherwise, you can run `t2 version` to get the version running on your Tessel, and then `t2 update -l` to see the 10 newest versions available.
+  The user does not get update information for t2-firmware from the CLI. The most convenient and fastest way to find out if a firmware update is needed is by running the `t2 update` command and the `t2-firmware` will update automatically if there is a newer firmware version available. Otherwise, you can run `t2 version` to get the version running on your Tessel, and then `t2 update -l` to see the 10 newest versions available. 
 
 ### Updating
 Simply run `t2 update`. If you want to update to a specific version, run `t2 update -v VERSION_NUM` where `VERSION_NUM` is one of the versions returned by `t2 update -l` (like `t2 update -v 0.0.6`).
