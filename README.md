@@ -1,5 +1,7 @@
 # Tessel 2 Docs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tessel/t2-docs.svg)](https://greenkeeper.io/)
+
 [![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](https://github.com/tessel/project/blob/master/CONDUCT.md)
 
 This is a GitBook-formatted guide. You may read the processed document at [https://www.gitbook.com/book/tessel/t2-docs/details](https://www.gitbook.com/book/tessel/t2-docs/details). PRs to this repository are automatically published online.
