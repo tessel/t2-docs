@@ -24,7 +24,7 @@ pin.pull(pullType,(error, buffer) => { // Pin 2 pulled high
   }
 });
 
-setInterval({
+setInterval(() => {
   pin.read(function(error, number){
 
       if (error) {
