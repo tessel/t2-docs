@@ -68,9 +68,9 @@ If you're newer to hardware and these functions look like alphabet soup to you, 
 
 By default, all of the pins are pulled high if not specifically set.
 
-### Pullup and Pulldown pins
+### Pull-up and Pull-down pins
 
-Pins 2-7 on both Ports are available for pullup and pulldown.
+Pins 2-7 on both Ports are available for pull-up and pull-down.
 
 The basic function of a pull-up resistor is to ensure that given no other input, a circuit assumes a default value. The 'pullup' mode pulls the line high and the 'pulldown' mode pulls it low.
 
