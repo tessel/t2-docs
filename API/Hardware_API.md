@@ -72,7 +72,7 @@ By default, all of the pins are pulled high if not specifically set.
 
 Pins 2-7 on both Ports are available for pullup and pulldown.
 
-The basic function of a pull-up resistor is to insure that given no other input, a circuit assumes a default value. The 'pullup' mode pulls the line high and the 'pulldown' mode pulls it low.
+The basic function of a pull-up resistor is to ensure that given no other input, a circuit assumes a default value. The 'pullup' mode pulls the line high and the 'pulldown' mode pulls it low.
 
 ### Usage
 ```js
@@ -80,46 +80,23 @@ The basic function of a pull-up resistor is to insure that given no other input,
 pin.pull(pullType, callback);
 ```
 
-Example of the `pin.pull(mode)` command using a pushbutton. The code example given below turns on the Blue LED of the Tessel module when the pushbutton is pressed and turns off the Blue LED when the pushbutton is released.
+Example : 
+
 
 ```js
 var tessel= require('tessel'); // Import Tessel
 
 var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
 
-var pullType = "pullup"; // Set the mode of `pin.pull to pullup`
-
-var led = tessel.led[3]; // Blue LED of Tessel
-
-pin.pull(pullType,(error, buffer) => { // Pin 2 pulled high
-
-  if (error){
+pin.pull('pullup', (error, buffer) => { // Pin 2 pulled high
+  if (error) {
     throw error;
   }
-});
-
-setInterval({
-  pin.read(function(error, number){
-
-      if (error) {
-        throw error;
-      }
-
-      // Pin 2 reads high when the pushbutton is not pressed since it is pulled up
-      console.log(number);
-      if (number == 1){
-        led.off();
-      }
-
-      // Pin 2 reads low when the pushbutton is pressed since its connection with ground gets complete
-      else{
-        led.on();
-      }
-
-  });
-
-}, 500);
+  console.log(buffer.toString()) // what should this be?
+}
 ```
+
+[Learn more about using the Pullup / Pulldown API.](/Tutorials/pinpull.html)
 
 
 
