@@ -88,12 +88,13 @@ var tessel= require('tessel'); // Import Tessel
 
 var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
 
-pin.pull('pullup', (error, buffer) => { // Pin 2 pulled high
-  if (error) {
-    throw error;
-  }
-  console.log(buffer.toString()) // what should this be?
-}
+pin.pull('pullup', (error, buffer) => {
+    if (error) {
+        throw error;
+    }
+    
+    console.log(buffer.toString('hex')); // The output would be 88. Which is an OK Signal from SAMD21
+})
 ```
 
 [Learn more about using the Pullup / Pulldown API.](/Tutorials/pinpull.html)
