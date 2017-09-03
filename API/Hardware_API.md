@@ -3,6 +3,7 @@
 * [Ports and pins](#ports-and-pins)
   * [Modules](#modules)
   * [Pin mapping](#pin-mapping)
+  * [Pull-up and Pull-down pins](#pull-up-and-pull-down-pins)
   * [Digital pins](#digital-pins)
   * [Analog pins](#analog-pins)
   * [Interrupts](#interrupt-pins)
