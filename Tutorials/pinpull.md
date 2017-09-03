@@ -22,28 +22,30 @@ pin.pull(pullType,(error, buffer) => { // Pin 2 pulled high
   if (error){
     throw error;
   }
+  
+  setInterval(() => {
+    pin.read(function(error, number){
+
+        if (error) {
+          throw error;
+        }
+
+        // Pin 2 reads high when the pushbutton is not pressed since it is pulled up
+        console.log(number);
+        if (number == 1){
+          led.off();
+        }
+
+        // Pin 2 reads low when the pushbutton is pressed since its connection with ground is completed
+        else{
+          led.on();
+        }
+
+    });
+
+  }, 500);
+  
 });
 
-setInterval(() => {
-  pin.read(function(error, number){
-
-      if (error) {
-        throw error;
-      }
-
-      // Pin 2 reads high when the pushbutton is not pressed since it is pulled up
-      console.log(number);
-      if (number == 1){
-        led.off();
-      }
-
-      // Pin 2 reads low when the pushbutton is pressed since its connection with ground is completed
-      else{
-        led.on();
-      }
-
-  });
-
-}, 500);
 ```
 [More information on Pull-up pins and resistors (Sparkfun Tutorials)](https://learn.sparkfun.com/tutorials/pull-up-resistors)
