@@ -131,6 +131,32 @@ pin.read(function(error, number) {
 });
 ```
 
+**pin.toggle:**
+
+Toggle the value of a digital pin. When the value of a pin is high, then it is set to low, and vice versa.
+
+```js
+pin.toggle(callback(error, buffer));
+```
+Option    | Type     | Description                                                                                                     | Required
+----------|----------|-----------------------------------------------------------------------------------------------------------------|---------
+callback  | Function                                                      | Called when action is complete                             | Yes
+error     | Error                                                         | Contains information if an error occured, otherwise `null` | Yes
+buffer    | [Buffer](https://nodejs.org/docs/latest-v4.x/api/buffer.html) | Value written to the pin                                   | Yes
+
+```js
+var tessel = require('tessel'); // Import tessel
+var pin = tessel.port.A.pin[3]; // Select pin 3 on port A
+pin.toggle((error, buffer) => {
+  if (error) {
+    throw error;
+  }
+
+  console.log(buffer.toString()); // Log the value written to the pin
+});
+```
+
+
 ### Analog pins
 
 An analog pin is a pin whose value can vary in the range between 0V and 3.3V. The analog pin API represents these this value as a percentage, between 0 and 1, where 1 stands for 3.3V.
