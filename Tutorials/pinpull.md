@@ -24,15 +24,16 @@ pin.pull(pullType,(error, buffer) => { // Pin 2 pulled high
   }
   
   setInterval(() => {
-    pin.read(function(error, number){
+    pin.read(function(error, valReturned){
+        // valReturned is the digital value that is returned from the pin
 
         if (error) {
           throw error;
         }
 
         // Pin 2 reads high when the pushbutton is not pressed since it is pulled up
-        console.log(number);
-        if (number == 1){
+        console.log(valReturned);
+        if (valReturned == 1){
           led.off();
         }
 
