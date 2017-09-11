@@ -13,6 +13,9 @@ var tessel = require('tessel'); //Import tessel
 
 // Connect to device
 var port = tessel.port.A; // Select Port A of Tessel
+
+//This address of the Slave has been taken from https://github.com/tessel/accel-mma84/blob/master/index.js#L15
+//More about registers can be found at Page 19 of https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf
 var slaveAddress = 0x1D; // Specefic for accelerometer module
 var i2c = new port.I2C(slaveAddress); // Initialize I2C communication
 
@@ -27,28 +30,29 @@ i2c.read(numBytesToRead, function (error, dataReceived) {
 });
 
 // Read/Receive data over I2C using i2c.transfer
+// 0x0D is the WHO_AM_I Register which sends back an acknoledgement to the master for starting the communication
 i2c.transfer(new Buffer([0x0D]), numBytesToRead, function (error, dataReceived) {
 
     // Print data received (buffer of hex values)
+    // The returned buffer from the I2C slave device should be [0x2A]
   console.log('Buffer returned by I2C slave device ('+slaveAddress.toString(16)+'):', dataReceived);
   
 });
 
 
-//Now, try to print the accelerometer data using i2c.transfer
+// Now, try to print the accelerometer data using i2c.transfer
+// The register address for OUT_X_MSB is 0x01. This can be found at Page 19 of https://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf
+// 6 Bytes are used for pairwise MSB and LSB of the x,y and z axis
 i2c.transfer(new Buffer([0x01]), 6, function (error, dataReceived) {
 
-    // Print data received (buffer of hex values)
     if (error) throw error;
     //Create a blank array for the output
     var out=[];
-    for (var i=0;i<3;i++)
-    {
-      //iterating for the x, y, z values
+    //iterating three times the x, y, z values
+    for (var i=0;i<3;i++){
       var gCount=(dataReceived[i*2] << 8) | dataReceived[(i*2)+1]; //Converting the 8 bit data into a 12 bit
       gCount=gCount >> 4;
-      if (dataReceived[i*2] > 0x7F) 
-      {
+      if (dataReceived[i*2] > 0x7F) {
           gCount = -(1 + 0xFFF - gCount); // Transform into negative 2's complement
       }
         out[i] = gCount / ((1<<12)/(2*2));
@@ -59,3 +63,5 @@ i2c.transfer(new Buffer([0x01]), 6, function (error, dataReceived) {
 ```
 
 [Datasheet for accelerometer module](http://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf)
+
+[More Informatiom on I2C Communication](https://learn.sparkfun.com/tutorials/i2c)
