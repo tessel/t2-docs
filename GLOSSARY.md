@@ -58,6 +58,12 @@ Points of electrical connection with an integrated circuit
 ## ports
 Interfaces for electrical connections
 
+## pull-up
+Ensures that given no input, the circuit assumes a defualt value, which is pulled high.
+
+## pull-down 
+Ensures that given no input, the circuit assumes a default value, which is pulled low.
+
 ## PWM
 Pulse-width modulation: a hardware communication protocol where there is a digital signal fluctuating between values at a set period, and the message is encoded by changing the percentage of that period in which the signal stays at one of the values. This can be used to approximate an analog signal on a pin which only supports digital signaling. A common application is in motor controllers, mapping a servo motor position to the percentage of the time a signal is held high
 

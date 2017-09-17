@@ -3,6 +3,7 @@
 * [Ports and pins](#ports-and-pins)
   * [Modules](#modules)
   * [Pin mapping](#pin-mapping)
+  * [Pull-up and Pull-down pins](#pull-up-and-pull-down-pins)
   * [Digital pins](#digital-pins)
   * [Analog pins](#analog-pins)
   * [Interrupts](#interrupt-pins)
@@ -69,6 +70,39 @@ The pin capabilities for ports A and B are as follows:
 If you're newer to hardware and these functions look like alphabet soup to you, take a look at our [communication protocols documentation](https://tessel.io/docs/communicationProtocols) to get an idea of how these pins should be used.
 
 By default, all of the pins are pulled high if not specifically set.
+
+### Pull-up and Pull-down pins
+
+Pins 2-7 on both Ports are available for pull-up and pull-down.
+
+The basic function of a pull-up resistor is to ensure that given no other input, a circuit assumes a default value. The 'pullup' mode pulls the line high and the 'pulldown' mode pulls it low.
+
+### Usage
+```js
+// Invoke this method to set the pull mode. pullType can be - pullup, pulldown or none.
+pin.pull(pullType, callback);
+```
+
+Example : 
+
+
+```js
+var tessel= require('tessel'); // Import Tessel
+
+var pin = tessel.port.A.pin[2]; // Select pin 2 on port A
+
+pin.pull('pullup', (error, buffer) => {
+    if (error) {
+        throw error;
+    }
+    
+    console.log(buffer.toString('hex')); // The output would be 88. Which is an OK Signal from SAMD21
+})
+```
+
+[Learn more about using the Pullup / Pulldown API.](/Tutorials/pinpull.html)
+
+
 
 ### Digital pins
 
