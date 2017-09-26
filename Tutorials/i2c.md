@@ -80,20 +80,22 @@ i2c.transfer(new Buffer([0x0D]), numBytesToRead, function (error, dataReceived) 
 
       for (var i=0;i<3;i++){
         var gCount=(dataReceived[i*2] << 8) | dataReceived[(i*2)+1];
-        console.log(gCount);
         gCount=gCount >> 4;
 
         // 127 is checking whether we have a 0 or a 1 at the first position - basically its sign.
         if (dataReceived[i*2] > 0x7F) {
             gCount = -(1 + 0xFFF - gCount); // Transform into negative 2's complement
           }
-          console.log(gCount);
           out[i] = gCount / ((1<<12)/(2*2));
       }
       console.log('The x, y, z values are :',out);
 
   });
 ```
+
+### Sample Ouput
+
+![output](https://i.imgur.com/Dg462Jf.jpg)
 
 [Datasheet for accelerometer module](http://www.nxp.com/docs/en/data-sheet/MMA8452Q.pdf)
 
