@@ -64,25 +64,21 @@ i2c.transfer(new Buffer([0x0D]), numBytesToRead, function (error, dataReceived) 
       //This array is going to store the final x,y,z values
       var out=[];
 
-
+      // The for loop is iterated 3 times, in order to extract the x,y, and z acceleration values.
+      for (var i=0;i<3;i++){
+      
       /*
-
-      The for loop is iterated 3 times, in order to extract the x,y,z values.
-      We have 16 bits to put together - the most significant 8 bits and the least significant 8 bits so that we can interpret them as one number. This combined value is placed in gCount variable using the OR operation  
+    
+       We have 16 bits to put together - the most significant 8 bits and the least significant 8 bits so that we can interpret them as one number. This combined value is placed in gCount variable using the OR operation.
       The gCount variable is a bitwise OR operation between two binary numbers:
         1. The 8 bits in OUT_MSB for a given coordinate are shifted left by 8 bits in order to make space for the remaining 8 bits
         of the OUT_LSB.
         2. The OUT_LSB of the respective coordinate.
-
-        The gCount number of the respective coordinate is right shifted by 4 to get rid of the unused lower 0 bits which are 4 in number yielding the 12 bits that the datasheet specifies each coordinate has on page number 21.
-
-        Lastly, normalize the coordinate to get a value between 0 and 1, dividing gCount by 2^10.
-
-      */
-
-      // Three iterations for the three coordinates
-      for (var i=0;i<3;i++){
+        
+     */
         var gCount=(dataReceived[i*2] << 8) | dataReceived[(i*2)+1];
+        
+      // The gCount number of the respective coordinate is right shifted by 4 to get rid of the unused lower 0 bits which are 4 in number yielding the 12 bits that the datasheet specifies each coordinate has on page number 21.  
         gCount=gCount >> 4;
 
 /*
@@ -96,6 +92,8 @@ i2c.transfer(new Buffer([0x0D]), numBytesToRead, function (error, dataReceived) 
         if (dataReceived[i*2] > 0x7F) {
             gCount = -(1 + 0xFFF - gCount); // Transform into negative 2's complement
           }
+          
+      // Lastly, normalize the coordinate to get a value between 0 and 1, dividing gCount by 2^10.
           out[i] = gCount / ((1<<12)/(2*2));
       }
       console.log('The x, y, z values are :',out);
