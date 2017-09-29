@@ -76,10 +76,6 @@ i2c.transfer(new Buffer([0x0D]), numBytesToRead, function (error, dataReceived) 
 
         The gCount number of the respective coordinate is right shifted by 4 to get rid of the unused lower 0 bits which are 4 in number yielding the 12 bits that the datasheet specifies each coordinate has on page number 21.
 
-        Check whether the most significant bit of the OUT_MSB is 1 or 0 i.e whether the coordinate value if negative or
-        positive. If it is negative (checked using 0x7F, which is the maximum possible number that can be made from 7 bits), the if condition changes
-        it to a 2's complement form, thus making it positive and adding a "-" sign in front of it.
-
         Lastly, normalize the coordinate to get a value between 0 and 1, dividing gCount by 2^10.
 
       */
@@ -89,7 +85,14 @@ i2c.transfer(new Buffer([0x0D]), numBytesToRead, function (error, dataReceived) 
         var gCount=(dataReceived[i*2] << 8) | dataReceived[(i*2)+1];
         gCount=gCount >> 4;
 
-        // 127 is checking whether we have a 0 or a 1 at the first position - basically its sign.
+/*
+
+    The x,y, and z accelerometer values are stored in their respective OUT_MSB and OUT_LSB registers as negative values i.e. their 2's       complement form. 
+    Therefore in order to obtain the correct values, check whether the most significant bit of the OUT_MSB is 1 or 0 i.e whether the         coordinate value is negative or positive. 
+    If it is negative (checked using 0x7F, which is the maximum possible number that can be made from 7 bits), the if condition changes     it to a 2's complement form, thus making it positive and adding a "-" sign in front of it.
+    127 is checking whether we have a 0 or a 1 at the first position - basically its sign.
+
+*/
         if (dataReceived[i*2] > 0x7F) {
             gCount = -(1 + 0xFFF - gCount); // Transform into negative 2's complement
           }
