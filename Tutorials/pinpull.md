@@ -1,4 +1,4 @@
-# Pull- Pins
+# Pull-Pins
 
 Suppose a pin is configured as an input. If nothing is connected to the pin and the program tries to read the state of the pin, it would be in a 'floating' state i.e an unknown state. To prevent this, a pull-up or a pull-down state is defined. They are often used in the case of Buttons and Switches.
 
