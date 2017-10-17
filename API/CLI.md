@@ -27,7 +27,7 @@ t2-cli and t2-firmware are separately versioned.
 
 * For updating t2-firmware:
 
-  The user does not get update information for t2-firmware from the CLI. The most convenient and fastest way to find out if a firmware update is needed is by running the `t2 update` command and the `t2-firmware` will update automatically if there is a newer firmware version available. Otherwise, you can run `t2 version` to get the version running on your Tessel, and then `t2 update -l` to see the 10 newest versions available. 
+  The user does not get update information for t2-firmware from the CLI. The most convenient and fastest way to find out if a firmware update is needed is by running the `t2 update` command and the `t2-firmware` will update automatically if there is a newer firmware version available. Otherwise, you can run `t2 version` to get the version running on your Tessel, and then `t2 update -l` to see the 10 newest versions available.
 
 ### Updating
 Simply run `t2 update`. If you want to update to a specific version, run `t2 update -v VERSION_NUM` where `VERSION_NUM` is one of the versions returned by `t2 update -l` (like `t2 update -v 0.0.6`).
@@ -41,9 +41,9 @@ Connecting to a Tessel 2 over USB requires no special setup.
 In order to authorize the device with your computer to work over a LAN connection, call `t2 provision` after connecting it via USB. This will place an SSH key on the device. Use the `t2 wifi` command as described below to connect Tessel 2 to a local network. You should now be able to access your Tessel 2 remotely.
 
 ### SSH
-To connect to your Tessel 2 over SSH use the `t2 root` command. Before you connect, call `t2 provision` to authorize your computer to access your Tessel via SSH.  
+To connect to your Tessel 2 over SSH use the `t2 root` command. Before you connect, call `t2 provision` to authorize your computer to access your Tessel via SSH.
 
-Usage  
+Usage
 *  `t2 root`
     * `[--timeout]` Set timeout in seconds for scanning networked Tessels. The default is `5` seconds.
     *  `[--key]` SSH key for authorization with your Tessel.  Optional, only required if you have changed the keypath after your Tessel was provisioned.
@@ -67,14 +67,15 @@ Along with the package.json and index.js included in the `t2 init` process, ther
 * `.tesselinclude` the overriding and opposite behavior of `.tesselignore`, this file should list any files or directories you want included with the T2 bundling and deployment process. This is handy for including non-JavaScript assets, like HTML, CSS, and images, for use within your project.
   * In your JavaScript program, assets listed in the `.tesselinclude` file should always be accessed using `__dirname` (read more about `__dirname` in the [Node.js docs](https://nodejs.org/api/globals.html#globals_dirname)). For example, if there is a file at `public/index.html` and it's listed in your `.tesselinclude`, from your JavaScript program, you'd read it like this: `fs.readFile(path.join(__dirname, "public/index.html"), "utf8", (error, contents) => ...);`.
 
-### Tessel Management  
-* `t2 provision` will authorize your computer to access a Tessel over SSH. (USB-connected Tessel only)
-* `t2 list` will show what Tessels are available over WiFi and USB.
-* `t2 rename` will change the name of a Tessel.
-* `t2 reboot` will reboot your Tessel.  
+### Tessel Management
 * `t2 key` will generate a local SSH keypair for authenticating to a Tessel.  Use with the `generate` argument to generate a new local SSH keypair for authenticating to a Tessel.
+* `t2 list` will show what Tessels are available over WiFi and USB.
+* `t2 provision` will authorize your computer to access a Tessel over SSH. (USB-connected Tessel only)
+* `t2 rename` will change the name of a Tessel.
+* `t2 reboot` will reboot your Tessel.
+* `t2 restore` Restore your Tessel to factory defaults by installing the factory version of [OpenWrt-Tessel](https://github.com/tessel/openwrt-tessel), and [T2-Firmware](https://github.com/tessel/t2-firmware).
 
-### Code Deployment  
+### Code Deployment
 During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files to let it know which files it should bundle up and push over to Tessel. In the default bundling process, CLI takes the file passed into the `run` or `push` command and uses it as an entry point to build a dependency graph (similar to [Browserify](https://github.com/substack/browserify-handbook#how-browserify-works)). Once the dependencies are known, binary modules are replaced by pre-compiled (for mips) binaries, assets are copied, and everything is tarred before sent to the awaiting Tessel.
 * `t2 run <file>` copy the file and its dependencies into Tessel's RAM & run immediately. Use this during development of your device application.
   * `[--lan]` deploy over LAN connection
