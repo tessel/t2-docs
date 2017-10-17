@@ -73,7 +73,7 @@ Along with the package.json and index.js included in the `t2 init` process, ther
 * `t2 provision` will authorize your computer to access a Tessel over SSH. (USB-connected Tessel only)
 * `t2 rename` will change the name of a Tessel.
 * `t2 reboot` will reboot your Tessel.
-* `t2 restore` Restore your Tessel to factory defaults by installing the factory version of [OpenWrt](https://openwrt.org/).
+* `t2 restore` Restore your Tessel to factory defaults by installing the factory version of [OpenWrt-Tessel](https://github.com/tessel/openwrt-tessel), and [T2-Firmware](https://github.com/tessel/t2-firmware).
 
 ### Code Deployment
 During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files to let it know which files it should bundle up and push over to Tessel. In the default bundling process, CLI takes the file passed into the `run` or `push` command and uses it as an entry point to build a dependency graph (similar to [Browserify](https://github.com/substack/browserify-handbook#how-browserify-works)). Once the dependencies are known, binary modules are replaced by pre-compiled (for mips) binaries, assets are copied, and everything is tarred before sent to the awaiting Tessel.
