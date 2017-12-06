@@ -15,7 +15,7 @@ First, you should confirm your host machine is on the same wifi network as your 
 
 Next, let's check if your computer is able to detect the Tessel at all (to determine if it's an issue with the CLI or with the Tessel). We'll use a utility that we absolutely know works.
 
-*I only have an example for OSX - if you know how to do mDNS discovery on Windows or Linux, please add to this file and submit a PR!*
+*I only have an example for OSX - if you know how to do mDNS discovery on Windows, please add to this file and submit a PR!*
 ### OSX
 ```
 dns-sd -B _tessel._tcp .
@@ -27,6 +27,11 @@ There is also issue a peculiar but uncommon issue where OSX just stops picking u
 sudo killall -HUP mDNSResponder
 ```
 This command basically clears the cache of mDNS devices so the next time you run the `dns-sd` utility or `t2 list`, Tessel will show up (if this was the root cause).
+### Linux
+```
+avahi-browse _tessel._tcp -t
+```
+This displays a list of DNS-SD entries that match _tessel._tcp and quits afterwards.
 
 ## An issue with network configuration
 Attempts to connect to your Tessel 2 via a network that is configured to block mDNS traffic will always fail. This type of configuration is often used for secured company networks and open public networks to prevent unwanted peer-to-peer discovery and access. If this is your home network, change the configuration via the router's administration control panel. If this is a network that you do not control, you may have to request the change from an IT department (or similar resource).
