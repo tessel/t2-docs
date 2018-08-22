@@ -403,8 +403,8 @@ Here is an example using Tessel's SPI protocol:
 var port = tessel.port.A;
 var spi = new port.SPI({
   clockSpeed: 4*1000*1000, // 4MHz
-  cpol: 0, // Polarity - optional
-  cpha: 0, // Clock phase - optional
+  polarity: 0, // Polarity - optional
+  phase: 0, // Clock phase - optional
   chipSelect: port.pin[7] // Chip select - optional
 });
 
