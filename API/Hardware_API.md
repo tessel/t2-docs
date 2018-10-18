@@ -11,7 +11,7 @@
   * [Terms used](#terms-used)
   * [I2C](#i2c)
   * [SPI](#spi)
-  * [UART/Serial](#uart-serial)
+  * [UART/Serial](#uartserial)
   * [Power management](#power-management)
 * [LEDs](#leds)
 * [Button](#button)
