@@ -90,6 +90,7 @@ During code deployment, CLI looks for `.tesselignore` and `.tesselinclude` files
   * `[--slim]` true by default, copy only files needed by the program to run
   * `[--full]` the opposite of --slim, copy all the files in the project directory
   * `[--compress]` true by default, compress and minify the project code prior to copying it to the device
+  * `[--binopts]` Arguments sent to the binary (e.g. Node.js, Python). For example, to enable ES modules in Node use `--binopts="--experimental-modules"` 
 * `t2 erase` erase any code pushed using the `t2 push` command
 
 ### Using Wifi
