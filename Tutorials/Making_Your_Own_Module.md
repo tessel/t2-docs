@@ -358,11 +358,11 @@ To help you get started creating your own custom modules, here is a list of the 
 [modules_page]: https://tessel.io/modules
 [third_party_modules]: https://tessel.io/modules#third-party
 [tessel_github]: https://github.com/tessel
-[repo_template]: https://github.com/tessel/style/tree/master/Templates
-[index_template]: https://github.com/tessel/style/blob/master/Templates/index.js
+[repo_template]: https://github.com/tessel/module-template
+[index_template]: https://github.com/tessel/t2-cli/blob/master/resources/javascript/index.js
 [package_json_standard]: https://www.npmjs.org/doc/files/package.json.html
 [npm_tutorial]: https://gist.github.com/coolaj86/1318304
-[readme_template]: https://github.com/tessel/style/blob/master/module_RM_template.md
+[readme_template]: https://github.com/tessel/module-template/blob/master/module_RM_template.md
 [hardware_api]: https://tessel.io/docs/hardwareAPI
 [tessel_projects]: https://projects.tessel.io/projects
 [module_submission]: https://docs.google.com/forms/d/1Zod-EjAIilRrCJX0Nt6k6TrFO-oREeBWMdBmNMw9Zxc/viewform
