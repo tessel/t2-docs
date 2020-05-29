@@ -8,50 +8,45 @@ In the following example, the Tessel will change the color of an RGB LED by chan
 
 ![PWM RGB LED Circuit](https://s3.amazonaws.com/technicalmachine-assets/tutorials/hardware-api/pwm-rgb-circuit.png)
 
+
+
 ```js
-var tessel = require('tessel'); // Import tessel
+const tessel = require('tessel');
 
-var portA = tessel.port.A; // Select port A
-var portB = tessel.port.B; // Select port B
-
-var redPin = portA.pwm[0]; // Select the first PWM pin on port A, equivalent to portA.pin[5]
-var greenPin = portA.pwm[1];
-var bluePin = portB.pwm[0];
+// Unpack and name pwm pins from port A
+const [ red, green ] = tessel.port.A.pwm;
+// Unpack and name pwm pin from port B
+const [ blue ] = tessel.port.B.pwm;
 
 // The starting values of each color out of 255
-var red = 0;
-var green = 0;
-var blue = 0;
+red.value = 0;
+green.value = 0;
+blue.value = 0;
 
 // Use this to increment the color value without exceeding 255
-function stepColor (value, step) {
-  value += step; // Add the step count to the existing value
-  
+function stepColor(led, step) {
+  led.value += step; // Add the step count to the existing value
+
   // If the value exceeds 255, then reset it to 0
-  if (value > 255) {
-    value = 0;
+  if (led.value > 255) {
+    led.value = 0;
   }
 
-  return value;
+  // return a fractional value
+  return led.value / 255;
 }
 
 // Set the signal frequency to 1000 Hz, or 1000 cycles per second
-// This the rate at which Tessel will send the PWM signals
+// This the rate at which Tessel will send PWM signals
 // This is program specific
 tessel.pwmFrequency(1000);
 
-// Create a loop to run a function at a set interval of time
-setinterval(function() {
-  // Increment each color at a unique step
-  red = stepColor(red, 10);
-  bluE = stepColor(blue, 5);
-  green = stepColor(green, 20);
-
-  // Set how often each pin is turned on out of 100%
-  // Divide the value by 255 to get a value between 0 and 1
-  redPin.pwmDutyCycle(red / 255);
-  greenPin.pwmDutyCycle(blue / 255);
-  bluePin.pwmDutyCycle(green / 255);
+// Create an interval to run a function which sets the color of all three LEDs
+setInterval(() => {
+  // Increment each LED color at a unique step
+  red.pwmDutyCycle(stepColor(red, 10));
+  green.pwmDutyCycle(stepColor(green, 5));
+  blue.pwmDutyCycle(stepColor(blue, 20));
 }, 500); // Set this function to be called every 500 milliseconds, or every half a second
 ```
 
@@ -59,3 +54,21 @@ Note: the `pwmFrequency` function *must* be called before `pwmDutyCycle`. Re-set
 `pwmFrequency` will disable PWM output until `pwmDutyCycle` is called again. 
 
 [More information on pulse-width modulation.](https://learn.sparkfun.com/tutorials/pulse-width-modulation)
+
+--------------------------------------------------------------
+
+If you're Tessel 2 is up-to-date, it will be be running Node.js 6.10.3 or newer. You can check that by running `t2 version` and comparing the output to the following: 
+
+```
+$ t2 version
+INFO Looking for your Tessel...
+INFO Connected to maria.
+INFO Tessel Environment Versions:
+INFO t2-cli: 0.1.5
+INFO t2-firmware: 0.1.0
+INFO Node.js: 6.10.3
+```
+
+If your output doesn't match, you should run `t2 update` to get the latest OS and firmware. Once that's done, you're ready to run the program in this tutorial.
+
+
